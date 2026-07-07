@@ -161,7 +161,7 @@ def notice():
     return render_template('notice.html', notices=notices)
 
 @app.route('/exam-schedule')
-def exam_schedule():
+def exam_schedule_2026():
     return render_template('exam_schedule.html')
 
 # ================= DYNAMIC PAGES =================
