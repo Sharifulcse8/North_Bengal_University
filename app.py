@@ -201,6 +201,10 @@ def student_profile(id):
 
 # ================= ADMIN PANEL =================
 
+@app.route('/admin')
+def admin_index():
+    return redirect(url_for('admin_dashboard'))
+
 @app.route('/admin/dashboard')
 def admin_dashboard():
     db = get_db()
