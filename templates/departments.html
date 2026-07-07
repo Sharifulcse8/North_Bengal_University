@@ -12,6 +12,26 @@
 
 {% block breadcrumb %}Departments{% endblock %}
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Computer Science & Engineering",
+  "description": "Learn programming, AI, networking, cybersecurity and software engineering from expert faculty.",
+  "url": "{{ url_for('departments', _external=True) }}",
+  "provider": {
+    "@type": "CollegeOrUniversity",
+    "name": "North Bengal University",
+    "url": "{{ url_for('home', _external=True) }}"
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "Onsite",
+    "courseWorkload": "PT40H"
+  }
+}
+</script>
+
 {% block content %}
 
 <!-- ===== HERO ===== -->

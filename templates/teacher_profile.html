@@ -12,6 +12,22 @@
 
 {% block breadcrumb %}Faculty Profile{% endblock %}
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "{{ teacher.name }}",
+  "jobTitle": "{{ teacher.designation }}",
+  "worksFor": {
+    "@type": "CollegeOrUniversity",
+    "name": "North Bengal University"
+  },
+  "email": "{{ teacher.email }}",
+  "telephone": "{{ teacher.phone or 'N/A' }}",
+  "url": "{{ url_for('teacher_profile', id=teacher.id, _external=True) }}"
+}
+</script>
+
 {% block content %}
 
 <!-- ===== HERO ===== -->

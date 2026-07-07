@@ -4,193 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}North Bengal University{% endblock %}</title>
+    
+    <!-- ====== ORGANIZATION SCHEMA (JSON-LD) ====== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollegeOrUniversity",
+      "name": "North Bengal University",
+      "alternateName": "NBU",
+      "url": "{{ url_for('home', _external=True) }}",
+      "logo": "{{ url_for('static', filename='images/logo.png', _external=True) }}",
+      "description": "North Bengal University is a leading private university in Bangladesh offering undergraduate and graduate programs in Science, Engineering, Business, and Arts.",
+      "foundingDate": "2005-01-15",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barishal",
+        "addressCountry": "Bangladesh"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+8801712345678",
+        "contactType": "Admissions",
+        "availableLanguage": ["English", "Bengali"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/northbengaluniversity",
+        "https://www.linkedin.com/school/northbengaluniversity"
+      ]
+    }
+    </script>
+    
+    <!-- Block for page-specific JSON-LD (e.g., NewsArticle, Course, etc.) -->
+    {% block json_ld %}{% endblock %}
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Extra head block for additional meta tags -->
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
 
+    <!-- ===== NAVBAR ===== -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="North Bengal University Logo" height="40" class="d-inline-block align-text-top me-2">
-            North Bengal University
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mainNav">
-            <ul class="navbar-nav ms-auto">
-                <!-- Home -->
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="North Bengal University Logo" height="40" class="d-inline-block align-text-top me-2">
+                North Bengal University
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Home -->
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
 
-                <!-- About with Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
-                        About
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ url_for('about') }}">Overview</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('about') }}#history">History</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('about') }}#mission">Mission & Vision</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('about') }}#leadership">Leadership</a></li>
-                    </ul>
-                </li>
+                    <!-- About with Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown">
+                            About
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ url_for('about') }}">Overview</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('about') }}#history">History</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('about') }}#mission">Mission & Vision</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('about') }}#leadership">Leadership</a></li>
+                        </ul>
+                    </li>
 
-                <!-- Academics with Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="academicDropdown" role="button" data-bs-toggle="dropdown">
-                        Academics
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ url_for('departments') }}">Departments</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('teachers') }}">Faculty Members</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('students') }}">Students</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('library') }}">Library</a></li>
-                    </ul>
-                </li>
+                    <!-- Academics with Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="academicDropdown" role="button" data-bs-toggle="dropdown">
+                            Academics
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ url_for('departments') }}">Departments</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('teachers') }}">Faculty Members</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('students') }}">Students</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('library') }}">Library</a></li>
+                        </ul>
+                    </li>
 
-                <!-- Admissions with Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="admissionDropdown" role="button" data-bs-toggle="dropdown">
-                        Admissions
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ url_for('admission') }}">Apply Now</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('admission') }}#requirements">Requirements</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('admission') }}#scholarship">Scholarships</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('admission') }}#fees">Tuition Fees</a></li>
-                    </ul>
-                </li>
+                    <!-- Admissions with Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="admissionDropdown" role="button" data-bs-toggle="dropdown">
+                            Admissions
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ url_for('admission') }}">Apply Now</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('admission') }}#requirements">Requirements</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('admission') }}#scholarship">Scholarships</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('admission') }}#fees">Tuition Fees</a></li>
+                        </ul>
+                    </li>
 
-                <!-- Research with Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="researchDropdown" role="button" data-bs-toggle="dropdown">
-                        Research
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ url_for('research') }}">Research Areas</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('research') }}#labs">Labs & Facilities</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('research') }}#publications">Publications</a></li>
-                        <li><a class="dropdown-item" href="{{ url_for('research') }}#projects">Projects</a></li>
-                    </ul>
-                </li>
+                    <!-- Research with Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="researchDropdown" role="button" data-bs-toggle="dropdown">
+                            Research
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ url_for('research') }}">Research Areas</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('research') }}#labs">Labs & Facilities</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('research') }}#publications">Publications</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('research') }}#projects">Projects</a></li>
+                        </ul>
+                    </li>
 
-                <!-- Facilities -->
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('facilities') }}">Facilities</a></li>
+                    <!-- Facilities -->
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('facilities') }}">Facilities</a></li>
 
-                <!-- Notices -->
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('notice') }}">Notices</a></li>
+                    <!-- Notices -->
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('notice') }}">Notices</a></li>
 
-                <!-- Contact -->
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
-            </ul>
+                    <!-- Contact -->
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
+    <!-- ===== MAIN CONTENT ===== -->
     <main>
         {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="container mt-3">
-                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="container mt-3">
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
         {% block content %}{% endblock %}
     </main>
 
     <!-- ===== FOOTER ===== -->
-<footer class="bg-dark text-white pt-5 pb-3">
-    <div class="container">
-        <div class="row g-4">
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
 
-            <!-- About University -->
-            <div class="col-md-4">
-                <h4 class="fw-bold mb-3">
-                    <i class="bi bi-mortarboard-fill text-warning"></i> 
-                    North Bengal University
-                </h4>
-                <p class="text-muted">
-                    Providing quality education, innovative research, and developing future leaders since 2005.
+                <!-- About University -->
+                <div class="col-md-4">
+                    <h4 class="fw-bold mb-3">
+                        <i class="bi bi-mortarboard-fill text-warning"></i> 
+                        North Bengal University
+                    </h4>
+                    <p class="text-muted">
+                        Providing quality education, innovative research, and developing future leaders since 2005.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-2"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-youtube fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter fs-5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-4">
+                    <h4 class="fw-bold mb-3">Quick Links</h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="{{ url_for('home') }}" class="text-decoration-none text-muted">Home</a></li>
+                                <li class="mb-2"><a href="{{ url_for('about') }}" class="text-decoration-none text-muted">About</a></li>
+                                <li class="mb-2"><a href="{{ url_for('admission') }}" class="text-decoration-none text-muted">Admission</a></li>
+                                <li class="mb-2"><a href="{{ url_for('departments') }}" class="text-decoration-none text-muted">Departments</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="{{ url_for('teachers') }}" class="text-decoration-none text-muted">Teachers</a></li>
+                                <li class="mb-2"><a href="{{ url_for('students') }}" class="text-decoration-none text-muted">Students</a></li>
+                                <li class="mb-2"><a href="{{ url_for('research') }}" class="text-decoration-none text-muted">Research</a></li>
+                                <li class="mb-2"><a href="{{ url_for('contact') }}" class="text-decoration-none text-muted">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="col-md-4">
+                    <h4 class="fw-bold mb-3">Contact Information</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+                            <span class="text-muted">Barishal, Bangladesh</span>
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-telephone-fill text-warning me-2"></i>
+                            <span class="text-muted">+8801712345678</span>
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-envelope-fill text-warning me-2"></i>
+                            <span class="text-muted">info@northbengaluniversity.edu</span>
+                        </li>
+                        <li class="mb-3">
+                            <i class="bi bi-clock-fill text-warning me-2"></i>
+                            <span class="text-muted">Sat - Thu: 9:00 AM - 5:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="border-secondary mt-4">
+
+            <div class="text-center">
+                <p class="text-muted mb-0">
+                    &copy; 2026 North Bengal University. All Rights Reserved. 
+                    <span class="d-block d-sm-inline">|</span> 
+                    <a href="#" class="text-muted text-decoration-none">Privacy Policy</a> 
+                    <span class="text-muted">|</span> 
+                    <a href="#" class="text-muted text-decoration-none">Sitemap</a>
                 </p>
-                <div class="mt-3">
-                    <a href="#" class="text-white me-2"><i class="bi bi-facebook fs-5"></i></a>
-                    <a href="#" class="text-white me-2"><i class="bi bi-linkedin fs-5"></i></a>
-                    <a href="#" class="text-white me-2"><i class="bi bi-youtube fs-5"></i></a>
-                    <a href="#" class="text-white"><i class="bi bi-twitter fs-5"></i></a>
-                </div>
             </div>
-
-            <!-- Quick Links -->
-            <div class="col-md-4">
-                <h4 class="fw-bold mb-3">Quick Links</h4>
-                <div class="row">
-                    <div class="col-6">
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><a href="{{ url_for('home') }}" class="text-decoration-none text-muted">Home</a></li>
-                            <li class="mb-2"><a href="{{ url_for('about') }}" class="text-decoration-none text-muted">About</a></li>
-                            <li class="mb-2"><a href="{{ url_for('admission') }}" class="text-decoration-none text-muted">Admission</a></li>
-                            <li class="mb-2"><a href="{{ url_for('departments') }}" class="text-decoration-none text-muted">Departments</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6">
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><a href="{{ url_for('teachers') }}" class="text-decoration-none text-muted">Teachers</a></li>
-                            <li class="mb-2"><a href="{{ url_for('students') }}" class="text-decoration-none text-muted">Students</a></li>
-                            <li class="mb-2"><a href="{{ url_for('research') }}" class="text-decoration-none text-muted">Research</a></li>
-                            <li class="mb-2"><a href="{{ url_for('contact') }}" class="text-decoration-none text-muted">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Information -->
-            <div class="col-md-4">
-                <h4 class="fw-bold mb-3">Contact Information</h4>
-                <ul class="list-unstyled">
-                    <li class="mb-3">
-                        <i class="bi bi-geo-alt-fill text-warning me-2"></i>
-                        <span class="text-muted">Barishal, Bangladesh</span>
-                    </li>
-                    <li class="mb-3">
-                        <i class="bi bi-telephone-fill text-warning me-2"></i>
-                        <span class="text-muted">+8801712345678</span>
-                    </li>
-                    <li class="mb-3">
-                        <i class="bi bi-envelope-fill text-warning me-2"></i>
-                        <span class="text-muted">info@northbengaluniversity.edu</span>
-                    </li>
-                    <li class="mb-3">
-                        <i class="bi bi-clock-fill text-warning me-2"></i>
-                        <span class="text-muted">Sat - Thu: 9:00 AM - 5:00 PM</span>
-                    </li>
-                </ul>
-            </div>
-
         </div>
+    </footer>
 
-        <hr class="border-secondary mt-4">
-
-        <div class="text-center">
-            <p class="text-muted mb-0">
-                &copy; 2026 North Bengal University. All Rights Reserved. 
-                <span class="d-block d-sm-inline">|</span> 
-                <a href="#" class="text-muted text-decoration-none">Privacy Policy</a> 
-                <span class="text-muted">|</span> 
-                <a href="#" class="text-muted text-decoration-none">Sitemap</a>
-            </p>
-        </div>
-    </div>
-</footer>
-
+    <!-- ===== SCRIPTS ===== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    <!-- Block for page-specific scripts -->
+    {% block extra_scripts %}{% endblock %}
 </body>
 </html>
