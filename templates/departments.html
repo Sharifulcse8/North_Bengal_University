@@ -29,7 +29,7 @@
         <p class="text-center text-muted mb-5">Explore our world-class academic departments offering undergraduate and graduate programs</p>
         <div class="row g-4">
 
-            <!-- CSE -->
+            <!-- ===== CSE ===== -->
             <div class="col-md-4">
                 <article class="card shadow h-100 border-0" aria-label="Department of Computer Science & Engineering">
                     <div class="card-body text-center p-4">
@@ -46,11 +46,17 @@
                         <a href="{{ url_for('teachers') }}#cse" class="btn btn-primary mt-3" aria-label="Learn more about Computer Science & Engineering department">
                             Explore Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='Computer Science & Engineering') }}" class="btn btn-outline-primary btn-sm">
+                                Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
 
-            <!-- EEE -->
+            <!-- ===== EEE ===== -->
             <div class="col-md-4">
                 <article class="card shadow h-100 border-0" aria-label="Department of Electrical & Electronic Engineering">
                     <div class="card-body text-center p-4">
@@ -67,11 +73,17 @@
                         <a href="{{ url_for('teachers') }}#eee" class="btn btn-primary mt-3" aria-label="Learn more about Electrical & Electronic Engineering department">
                             Explore Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='Electrical & Electronic Engineering') }}" class="btn btn-outline-primary btn-sm">
+                                Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
 
-            <!-- PHYSICS -->
+            <!-- ===== PHYSICS ===== -->
             <div class="col-md-4">
                 <article class="card shadow h-100 border-0" aria-label="Department of Physics">
                     <div class="card-body text-center p-4">
@@ -88,11 +100,17 @@
                         <a href="{{ url_for('teachers') }}#physics" class="btn btn-primary mt-3" aria-label="Learn more about Physics department">
                             Explore Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='Physics') }}" class="btn btn-outline-primary btn-sm">
+                                Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
 
-            <!-- BBA -->
+            <!-- ===== BBA ===== -->
             <div class="col-md-4">
                 <article class="card shadow h-100 border-0" aria-label="Department of Business Administration">
                     <div class="card-body text-center p-4">
@@ -109,11 +127,17 @@
                         <a href="{{ url_for('teachers') }}#bba" class="btn btn-primary mt-3" aria-label="Learn more about Business Administration department">
                             Explore Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='Business Administration') }}" class="btn btn-outline-primary btn-sm">
+                                Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
 
-            <!-- ENGLISH -->
+            <!-- ===== ENGLISH ===== -->
             <div class="col-md-4">
                 <article class="card shadow h-100 border-0" aria-label="Department of English">
                     <div class="card-body text-center p-4">
@@ -130,11 +154,17 @@
                         <a href="{{ url_for('teachers') }}#english" class="btn btn-primary mt-3" aria-label="Learn more about English department">
                             Explore Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='English') }}" class="btn btn-outline-primary btn-sm">
+                                Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
 
-            <!-- MATHEMATICS -->
+            <!-- ===== MATHEMATICS ===== -->
             <div class="col-md-4">
                 <article class="card shadow h-100 border-0" aria-label="Department of Mathematics">
                     <div class="card-body text-center p-4">
@@ -151,13 +181,19 @@
                         <a href="{{ url_for('teachers') }}#math" class="btn btn-primary mt-3" aria-label="Learn more about Mathematics department">
                             Explore Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='Mathematics') }}" class="btn btn-outline-primary btn-sm">
+                                Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
 
         </div>
         
-        <!-- View All Departments Button -->
+        <!-- ===== VIEW ALL DEPARTMENTS ===== -->
         <div class="text-center mt-5">
             <a href="{{ url_for('departments') }}" class="btn btn-outline-primary btn-lg">
                 View All Departments <i class="bi bi-arrow-right"></i>
