@@ -1,16 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}{{ teacher.name }} | Faculty Profile{% endblock %}
+{% block title %}{{ teacher.name }} | Faculty Profile | North Bengal University{% endblock %}
+
+{% block description %}View the faculty profile of {{ teacher.name }}, {{ teacher.designation }} at North Bengal University. Department: {{ teacher.department }}.{% endblock %}
+
+{% block keywords %}{{ teacher.name }}, Faculty Profile, {{ teacher.designation }}, {{ teacher.department }}, North Bengal University{% endblock %}
+
+{% block canonical %}/teacher/{{ id }}{% endblock %}
+
+{% block og_title %}{{ teacher.name }} - Faculty Profile | North Bengal University{% endblock %}
+
+{% block breadcrumb %}Faculty Profile{% endblock %}
 
 {% block content %}
 
+<!-- ===== HERO ===== -->
 <section class="bg-primary text-white text-center py-5">
     <div class="container">
-        <h1>{{ teacher.name }}</h1>
-        <p>{{ teacher.designation }}</p>
+        <h1 class="display-4 fw-bold">{{ teacher.name }}</h1>
+        <p class="lead">{{ teacher.designation }}</p>
     </div>
 </section>
 
+<!-- ===== PROFILE ===== -->
 <section class="py-5">
     <div class="container">
         <div class="row">
@@ -19,7 +31,6 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 text-center">
-                                <!-- ===== IMAGE WITH UI AVATARS FALLBACK ===== -->
                                 <img src="{{ url_for('static', filename='images/' ~ teacher.image) }}" 
                                      class="img-fluid rounded-circle shadow" 
                                      alt="{{ teacher.name }}"
@@ -27,16 +38,16 @@
                                      onerror="this.src='https://ui-avatars.com/api/?name={{ teacher.name }}&background=0D6EFD&color=fff&size=200'">
                             </div>
                             <div class="col-md-8">
-                                <h4>Profile Information</h4>
+                                <h2 class="h4">Profile Information</h2>
                                 <hr>
                                 <p><strong>Name:</strong> {{ teacher.name }}</p>
                                 <p><strong>Designation:</strong> {{ teacher.designation }}</p>
                                 <p><strong>Department:</strong> {{ teacher.department }}</p>
                                 <p><strong>Email:</strong> {{ teacher.email }}</p>
                                 <p><strong>Phone:</strong> {{ teacher.phone or 'N/A' }}</p>
-                                <p><strong>Biography:</strong></p>
+                                <h3 class="h6">Biography</h3>
                                 <p>{{ teacher.bio or 'No biography available.' }}</p>
-                                <a href="{{ url_for('teachers') }}" class="btn btn-primary">Back to Faculty</a>
+                                <a href="{{ url_for('teachers') }}" class="btn btn-primary mt-3">Back to Faculty</a>
                             </div>
                         </div>
                     </div>

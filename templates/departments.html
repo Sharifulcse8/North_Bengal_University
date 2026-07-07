@@ -1,13 +1,24 @@
 {% extends "base.html" %}
 
-{% block title %}Departments | North Bengal University{% endblock %}
+{% block title %}Academic Departments | North Bengal University{% endblock %}
+
+{% block description %}Explore the academic departments of North Bengal University including CSE, EEE, Physics, BBA, English, and Mathematics. Undergraduate and graduate programs available.{% endblock %}
+
+{% block keywords %}Academic Departments, CSE, EEE, Physics, BBA, English, Mathematics, North Bengal University{% endblock %}
+
+{% block canonical %}/departments{% endblock %}
+
+{% block og_title %}Academic Departments | North Bengal University{% endblock %}
+
+{% block breadcrumb %}Departments{% endblock %}
 
 {% block content %}
 
+<!-- ===== HERO ===== -->
 <section class="bg-primary text-white text-center py-5">
     <div class="container">
-        <h1>Academic Departments</h1>
-        <p>Explore our undergraduate and postgraduate programs.</p>
+        <h1 class="display-4 fw-bold">Academic Departments</h1>
+        <p class="lead">Explore our undergraduate and postgraduate programs across 6 disciplines</p>
     </div>
 </section>
 
@@ -65,7 +76,7 @@
                 <article class="card shadow h-100 border-0" aria-label="Department of Physics">
                     <div class="card-body text-center p-4">
                         <div class="icon-box mb-3">
-                            <i class="bi bi bi-magnet display-1 text-danger"></i>
+                            <i class="bi bi-magnet display-1 text-danger"></i>
                         </div>
                         <h3 class="h4">Physics</h3>
                         <p>Explore quantum mechanics, astrophysics, modern physics and fundamental laws of nature.</p>

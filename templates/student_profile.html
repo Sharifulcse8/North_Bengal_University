@@ -1,16 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}{{ student.name }} | Student Profile{% endblock %}
+{% block title %}{{ student.name }} | Student Profile | North Bengal University{% endblock %}
+
+{% block description %}View the academic profile of {{ student.name }}, a student at North Bengal University. Department: {{ student.department }}, Student ID: {{ student.student_id }}, CGPA: {{ student.cgpa }}.{% endblock %}
+
+{% block keywords %}{{ student.name }}, Student Profile, {{ student.department }}, North Bengal University, Student Information{% endblock %}
+
+{% block canonical %}/student/{{ id }}{% endblock %}
+
+{% block og_title %}{{ student.name }} - Student Profile | North Bengal University{% endblock %}
+
+{% block breadcrumb %}Student Profile{% endblock %}
 
 {% block content %}
 
+<!-- ===== HERO ===== -->
 <section class="bg-primary text-white text-center py-5">
     <div class="container">
-        <h1>{{ student.name }}</h1>
-        <p>Student | {{ student.department }}</p>
+        <h1 class="display-4 fw-bold">{{ student.name }}</h1>
+        <p class="lead">Student | {{ student.department }}</p>
     </div>
 </section>
 
+<!-- ===== PROFILE ===== -->
 <section class="py-5">
     <div class="container">
         <div class="row">
@@ -19,7 +31,6 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 text-center">
-                                
                                 <img src="{{ url_for('static', filename='images/' ~ student.image) }}" 
                                      class="img-fluid rounded-circle shadow" 
                                      alt="{{ student.name }}"
@@ -27,7 +38,7 @@
                                      onerror="this.src='https://ui-avatars.com/api/?name={{ student.name }}&background=0D6EFD&color=fff&size=200'">
                             </div>
                             <div class="col-md-8">
-                                <h4>Academic Information</h4>
+                                <h2 class="h4">Academic Information</h2>
                                 <hr>
                                 <p><strong>Name:</strong> {{ student.name }}</p>
                                 <p><strong>Student ID:</strong> {{ student.student_id }}</p>
@@ -36,9 +47,9 @@
                                 <p><strong>CGPA:</strong> {{ student.cgpa }}</p>
                                 <p><strong>Email:</strong> {{ student.email }}</p>
                                 <p><strong>Phone:</strong> {{ student.phone or 'N/A' }}</p>
-                                <p><strong>Biography:</strong></p>
+                                <h3 class="h6">Biography</h3>
                                 <p>{{ student.bio or 'No biography available.' }}</p>
-                                <a href="{{ url_for('students') }}" class="btn btn-primary">Back to Students</a>
+                                <a href="{{ url_for('students') }}" class="btn btn-primary mt-3">Back to Students</a>
                             </div>
                         </div>
                     </div>

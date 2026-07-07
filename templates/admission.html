@@ -1,39 +1,50 @@
 {% extends "base.html" %}
 
-{% block title %}Admission | North Bengal University{% endblock %}
+{% block title %}Admission 2026 | North Bengal University{% endblock %}
+
+{% block description %}Apply for admission to North Bengal University. Learn about the admission process, eligibility requirements, tuition fees, and submit your online application form.{% endblock %}
+
+{% block keywords %}Admission 2026, North Bengal University Admission, Apply Online, Eligibility, Tuition Fees, CSE, EEE, BBA{% endblock %}
+
+{% block canonical %}/admission{% endblock %}
+
+{% block og_title %}Admission 2026 - North Bengal University{% endblock %}
+
+{% block breadcrumb %}Admission{% endblock %}
 
 {% block content %}
 
+<!-- ===== HERO ===== -->
 <section class="bg-primary text-white text-center py-5">
     <div class="container">
-        <h1>Admission 2026</h1>
-        <p>Start your academic journey with North Bengal University.</p>
+        <h1 class="display-4 fw-bold">Admission 2026</h1>
+        <p class="lead">Start your academic journey with North Bengal University</p>
     </div>
 </section>
 
 <!-- ===== ADMISSION PROCESS ===== -->
 <section class="py-5">
     <div class="container">
-        <h2 class="text-center">Admission Process</h2>
+        <h2 class="text-center fw-bold mb-4">Admission Process</h2>
         <div class="row">
             <div class="col-md-3 text-center">
-                <h1>1</h1>
-                <h5>Apply Online</h5>
+                <p class="display-1 fw-bold text-primary">1</p>
+                <h3 class="h5">Apply Online</h3>
                 <p>Complete the online application form.</p>
             </div>
             <div class="col-md-3 text-center">
-                <h1>2</h1>
-                <h5>Document Verification</h5>
+                <p class="display-1 fw-bold text-primary">2</p>
+                <h3 class="h5">Document Verification</h3>
                 <p>Submit all required academic documents.</p>
             </div>
             <div class="col-md-3 text-center">
-                <h1>3</h1>
-                <h5>Admission Test</h5>
+                <p class="display-1 fw-bold text-primary">3</p>
+                <h3 class="h5">Admission Test</h3>
                 <p>Attend the university admission examination.</p>
             </div>
             <div class="col-md-3 text-center">
-                <h1>4</h1>
-                <h5>Final Enrollment</h5>
+                <p class="display-1 fw-bold text-primary">4</p>
+                <h3 class="h5">Final Enrollment</h3>
                 <p>Complete payment and enrollment.</p>
             </div>
         </div>
@@ -43,7 +54,7 @@
 <!-- ===== ELIGIBILITY ===== -->
 <section class="bg-light py-5">
     <div class="container">
-        <h2 class="text-center">Eligibility Requirements</h2>
+        <h2 class="text-center fw-bold mb-4">Eligibility Requirements</h2>
         <ul class="list-group">
             <li class="list-group-item">SSC and HSC or Equivalent</li>
             <li class="list-group-item">Minimum GPA Requirement</li>
@@ -57,18 +68,40 @@
 <!-- ===== TUITION FEES ===== -->
 <section class="py-5">
     <div class="container">
-        <h2 class="text-center">Tuition Fees</h2>
-        <table class="table table-bordered">
-            <thead class="table-primary">
-                <tr><th>Program</th><th>Duration</th><th>Total Fee</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>BSc in CSE</td><td>4 Years</td><td>BDT 450,000</td></tr>
-                <tr><td>BSc in EEE</td><td>4 Years</td><td>BDT 430,000</td></tr>
-                <tr><td>BBA</td><td>4 Years</td><td>BDT 380,000</td></tr>
-                <tr><td>BA in English</td><td>4 Years</td><td>BDT 320,000</td></tr>
-            </tbody>
-        </table>
+        <h2 class="text-center fw-bold mb-4">Tuition Fees</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Program</th>
+                        <th>Duration</th>
+                        <th>Total Fee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BSc in CSE</td>
+                        <td>4 Years</td>
+                        <td>BDT 450,000</td>
+                    </tr>
+                    <tr>
+                        <td>BSc in EEE</td>
+                        <td>4 Years</td>
+                        <td>BDT 430,000</td>
+                    </tr>
+                    <tr>
+                        <td>BBA</td>
+                        <td>4 Years</td>
+                        <td>BDT 380,000</td>
+                    </tr>
+                    <tr>
+                        <td>BA in English</td>
+                        <td>4 Years</td>
+                        <td>BDT 320,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>
 
@@ -79,7 +112,7 @@
             <div class="col-lg-8">
                 <div class="card shadow">
                     <div class="card-header bg-primary text-white text-center">
-                        <h3 class="mb-0">Online Application Form</h3>
+                        <h2 class="h4 mb-0">Online Application Form</h2>
                         <p class="mb-0">Academic Year 2026-2027</p>
                     </div>
                     <div class="card-body">
@@ -99,7 +132,7 @@
                         <form method="POST" action="{{ url_for('admission') }}" enctype="multipart/form-data">
 
                             <!-- ===== PERSONAL INFORMATION ===== -->
-                            <h5 class="border-bottom pb-2 text-primary">Personal Information</h5>
+                            <h3 class="h5 border-bottom pb-2 text-primary">Personal Information</h3>
                             <div class="row mt-3">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Full Name <span class="text-danger">*</span></label>
@@ -158,7 +191,7 @@
                             </div>
 
                             <!-- ===== CONTACT INFORMATION ===== -->
-                            <h5 class="border-bottom pb-2 text-primary mt-4">Contact Information</h5>
+                            <h3 class="h5 border-bottom pb-2 text-primary mt-4">Contact Information</h3>
                             <div class="row mt-3">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Email Address <span class="text-danger">*</span></label>
@@ -181,7 +214,7 @@
                             </div>
 
                             <!-- ===== ACADEMIC INFORMATION ===== -->
-                            <h5 class="border-bottom pb-2 text-primary mt-4">Academic Information</h5>
+                            <h3 class="h5 border-bottom pb-2 text-primary mt-4">Academic Information</h3>
                             <div class="row mt-3">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">SSC / Equivalent <span class="text-danger">*</span></label>
@@ -214,7 +247,7 @@
                             </div>
 
                             <!-- ===== PROGRAM SELECTION ===== -->
-                            <h5 class="border-bottom pb-2 text-primary mt-4">Program Selection</h5>
+                            <h3 class="h5 border-bottom pb-2 text-primary mt-4">Program Selection</h3>
                             <div class="row mt-3">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Preferred Department <span class="text-danger">*</span></label>
@@ -240,7 +273,7 @@
                             </div>
 
                             <!-- ===== PHOTO UPLOAD ===== -->
-                            <h5 class="border-bottom pb-2 text-primary mt-4">Photo Upload</h5>
+                            <h3 class="h5 border-bottom pb-2 text-primary mt-4">Photo Upload</h3>
                             <div class="row mt-3">
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Passport Size Photo <span class="text-danger">*</span></label>

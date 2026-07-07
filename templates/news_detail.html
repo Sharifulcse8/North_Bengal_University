@@ -1,29 +1,41 @@
 {% extends "base.html" %}
 
-{% block title %}{{ news.title }} | North Bengal University{% endblock %}
+{% block title %}{{ news.title }} | News Detail | North Bengal University{% endblock %}
+
+{% block description %}{{ news.title }} - Read the full news article from North Bengal University. Published on {{ news.date }}.{% endblock %}
+
+{% block keywords %}{{ news.title }}, North Bengal University News, University News, Event{% endblock %}
+
+{% block canonical %}/news/{{ id }}{% endblock %}
+
+{% block og_title %}{{ news.title }} - North Bengal University News{% endblock %}
+
+{% block breadcrumb %}News Detail{% endblock %}
 
 {% block content %}
 
+<!-- ===== HERO ===== -->
 <section class="bg-primary text-white text-center py-5">
     <div class="container">
-        <h1>{{ news.title }}</h1>
-        <p>Published on: {{ news.date }}</p>
+        <h1 class="display-4 fw-bold">{{ news.title }}</h1>
+        <p class="lead">Published on: {{ news.date }}</p>
     </div>
 </section>
 
+<!-- ===== NEWS CONTENT ===== -->
 <section class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <div class="card shadow">
+                <article class="card shadow">
                     <div class="card-body">
-                        <h4>{{ news.title }}</h4>
+                        <h2 class="h4">{{ news.title }}</h2>
                         <p>{{ news.content }}</p>
                         <hr>
                         <p><strong>Published:</strong> {{ news.date }}</p>
                         <a href="{{ url_for('news') }}" class="btn btn-primary">Back to News</a>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </div>

@@ -1,23 +1,35 @@
 {% extends "base.html" %}
 
-{% block title %}Teachers | North Bengal University{% endblock %}
+{% block title %}Faculty Members | North Bengal University{% endblock %}
+
+{% block description %}Meet the highly qualified faculty members of North Bengal University. Experienced teachers across CSE, EEE, Physics, BBA, English, and Mathematics departments.{% endblock %}
+
+{% block keywords %}Faculty Members, Teachers, Professors, CSE, EEE, Physics, BBA, English, Mathematics, North Bengal University{% endblock %}
+
+{% block canonical %}/teachers{% endblock %}
+
+{% block og_title %}Faculty Members | North Bengal University{% endblock %}
+
+{% block breadcrumb %}Teachers{% endblock %}
 
 {% block content %}
 
+<!-- ===== HERO ===== -->
 <section class="bg-primary text-white text-center py-5">
     <div class="container">
-        <h1>Faculty Members</h1>
-        <p>Meet our highly qualified and experienced teachers.</p>
+        <h1 class="display-4 fw-bold">Faculty Members</h1>
+        <p class="lead">Meet our highly qualified and experienced teachers</p>
     </div>
 </section>
 
+<!-- ===== FACULTY MEMBERS ===== -->
 <section class="py-5">
     <div class="container">
 
         <!-- ===== CSE ===== -->
         <div id="cse" class="mb-5 {% if department and department != 'Computer Science & Engineering' %}d-none{% endif %}">
-            <h3 class="text-primary border-bottom pb-2">Computer Science & Engineering (CSE)</h3>
-            <div class="row">
+            <h2 class="text-primary border-bottom pb-2">Computer Science & Engineering (CSE)</h2>
+            <div class="row mt-4">
                 {% for teacher in teachers %}
                     {% if teacher.department == 'Computer Science & Engineering' %}
                     <div class="col-md-4">
@@ -27,7 +39,7 @@
                                  alt="{{ teacher.name }}"
                                  onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
                             <div class="card-body">
-                                <h4>{{ teacher.name }}</h4>
+                                <h3 class="h5">{{ teacher.name }}</h3>
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>
@@ -51,8 +63,8 @@
 
         <!-- ===== EEE ===== -->
         <div id="eee" class="mb-5 {% if department and department != 'Electrical & Electronic Engineering' %}d-none{% endif %}">
-            <h3 class="text-primary border-bottom pb-2">Electrical & Electronic Engineering (EEE)</h3>
-            <div class="row">
+            <h2 class="text-primary border-bottom pb-2">Electrical & Electronic Engineering (EEE)</h2>
+            <div class="row mt-4">
                 {% for teacher in teachers %}
                     {% if teacher.department == 'Electrical & Electronic Engineering' %}
                     <div class="col-md-4">
@@ -62,7 +74,7 @@
                                  alt="{{ teacher.name }}"
                                  onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
                             <div class="card-body">
-                                <h4>{{ teacher.name }}</h4>
+                                <h3 class="h5">{{ teacher.name }}</h3>
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>
@@ -86,8 +98,8 @@
 
         <!-- ===== PHYSICS ===== -->
         <div id="physics" class="mb-5 {% if department and department != 'Physics' %}d-none{% endif %}">
-            <h3 class="text-primary border-bottom pb-2">Physics</h3>
-            <div class="row">
+            <h2 class="text-primary border-bottom pb-2">Physics</h2>
+            <div class="row mt-4">
                 {% for teacher in teachers %}
                     {% if teacher.department == 'Physics' %}
                     <div class="col-md-4">
@@ -97,7 +109,7 @@
                                  alt="{{ teacher.name }}"
                                  onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
                             <div class="card-body">
-                                <h4>{{ teacher.name }}</h4>
+                                <h3 class="h5">{{ teacher.name }}</h3>
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>
@@ -121,8 +133,8 @@
 
         <!-- ===== BBA ===== -->
         <div id="bba" class="mb-5 {% if department and department != 'Business Administration' %}d-none{% endif %}">
-            <h3 class="text-primary border-bottom pb-2">Business Administration (BBA)</h3>
-            <div class="row">
+            <h2 class="text-primary border-bottom pb-2">Business Administration (BBA)</h2>
+            <div class="row mt-4">
                 {% for teacher in teachers %}
                     {% if teacher.department == 'Business Administration' %}
                     <div class="col-md-4">
@@ -132,7 +144,7 @@
                                  alt="{{ teacher.name }}"
                                  onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
                             <div class="card-body">
-                                <h4>{{ teacher.name }}</h4>
+                                <h3 class="h5">{{ teacher.name }}</h3>
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>
@@ -156,8 +168,8 @@
 
         <!-- ===== ENGLISH ===== -->
         <div id="english" class="mb-5 {% if department and department != 'English' %}d-none{% endif %}">
-            <h3 class="text-primary border-bottom pb-2">English</h3>
-            <div class="row">
+            <h2 class="text-primary border-bottom pb-2">English</h2>
+            <div class="row mt-4">
                 {% for teacher in teachers %}
                     {% if teacher.department == 'English' %}
                     <div class="col-md-4">
@@ -167,7 +179,7 @@
                                  alt="{{ teacher.name }}"
                                  onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
                             <div class="card-body">
-                                <h4>{{ teacher.name }}</h4>
+                                <h3 class="h5">{{ teacher.name }}</h3>
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>
@@ -191,8 +203,8 @@
 
         <!-- ===== MATHEMATICS ===== -->
         <div id="math" class="mb-5 {% if department and department != 'Mathematics' %}d-none{% endif %}">
-            <h3 class="text-primary border-bottom pb-2">Mathematics</h3>
-            <div class="row">
+            <h2 class="text-primary border-bottom pb-2">Mathematics</h2>
+            <div class="row mt-4">
                 {% for teacher in teachers %}
                     {% if teacher.department == 'Mathematics' %}
                     <div class="col-md-4">
@@ -202,7 +214,7 @@
                                  alt="{{ teacher.name }}"
                                  onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
                             <div class="card-body">
-                                <h4>{{ teacher.name }}</h4>
+                                <h3 class="h5">{{ teacher.name }}</h3>
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>

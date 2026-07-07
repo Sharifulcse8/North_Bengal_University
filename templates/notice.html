@@ -1,40 +1,50 @@
 {% extends "base.html" %}
 
-{% block title %}Notices | North Bengal University{% endblock %}
+{% block title %}Notices and Announcements | North Bengal University{% endblock %}
+
+{% block description %}Stay updated with the latest notices and announcements from North Bengal University including admission notices, exam schedules, and important updates.{% endblock %}
+
+{% block keywords %}Notices, Announcements, Admission Notice, Exam Schedule, North Bengal University{% endblock %}
+
+{% block canonical %}/notice{% endblock %}
+
+{% block og_title %}Notices and Announcements | North Bengal University{% endblock %}
+
+{% block breadcrumb %}Notices{% endblock %}
 
 {% block content %}
 
+<!-- ===== HERO ===== -->
 <section class="bg-primary text-white text-center py-5">
     <div class="container">
-        <h1>Notices & Announcements</h1>
-        <p>Stay updated with the latest news.</p>
+        <h1 class="display-4 fw-bold">Notices &amp; Announcements</h1>
+        <p class="lead">Stay updated with the latest news and important information</p>
     </div>
 </section>
 
+<!-- ===== NOTICES ===== -->
 <section class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="card shadow">
+                <article class="card shadow">
                     <div class="card-body">
-                        <h4>Admission Open 2026</h4>
+                        <h2 class="h4">Admission Open 2026</h2>
                         <p>Applications are now open for Fall 2026.</p>
-                        <small>Posted: 1 July 2026</small>
-                        <br>
+                        <p><small class="text-muted">Posted: 1 July 2026</small></p>
                         <a href="{{ url_for('admission') }}" class="btn btn-primary btn-sm mt-2">View Details</a>
                     </div>
-                </div>
+                </article>
             </div>
             <div class="col-md-6">
-                <div class="card shadow">
+                <article class="card shadow">
                     <div class="card-body">
-                        <h4>Exam Schedule 2026</h4>
+                        <h2 class="h4">Exam Schedule 2026</h2>
                         <p>Final exam schedule for Spring 2026 is published.</p>
-                        <small>Posted: 15 June 2026</small>
-                        <br>
+                        <p><small class="text-muted">Posted: 15 June 2026</small></p>
                         <a href="{{ url_for('exam_schedule') }}" class="btn btn-primary btn-sm mt-2">View Details</a>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </div>
