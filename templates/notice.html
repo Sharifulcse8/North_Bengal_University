@@ -34,15 +34,15 @@
                         <p>{{ notice.content }}</p>
                         <p><small class="text-muted">Posted: {{ notice.date_posted }}</small></p>
                         {% if 'admission' in notice.title.lower() %}
-                        <a href="{{ url_for('admission') }}" class="btn btn-primary btn-sm mt-2" aria-label="View admission details">
+                        <a href="{{ url_for('admission') }}" class="btn btn-primary btn-sm mt-2" aria-label="View admission details for {{ notice.title }}">
                             View Admission Details <i class="bi bi-arrow-right"></i>
                         </a>
-                        {% elif 'exam' in notice.title.lower() %}
-                        <a href="{{ url_for('exam_schedule') }}" class="btn btn-primary btn-sm mt-2" aria-label="View exam schedule">
+                        {% elif 'exam' in notice.title.lower() or 'schedule' in notice.title.lower() %}
+                        <a href="{{ url_for('exam_schedule') }}" class="btn btn-primary btn-sm mt-2" aria-label="View exam schedule for {{ notice.title }}">
                             View Exam Schedule <i class="bi bi-arrow-right"></i>
                         </a>
                         {% else %}
-                        <a href="#" class="btn btn-primary btn-sm mt-2" aria-label="View notice details">View Details</a>
+                        <a href="#" class="btn btn-primary btn-sm mt-2" aria-label="View details for {{ notice.title }}">View Details</a>
                         {% endif %}
                     </div>
                 </article>
