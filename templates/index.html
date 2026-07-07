@@ -123,9 +123,15 @@
                             <span class="badge bg-success me-1">MSc</span>
                             <span class="badge bg-info">PhD</span>
                         </div>
-                        <a href="{{ url_for('teachers') }}#cse" class="btn btn-primary mt-3" aria-label="Learn more about Computer Science & Engineering department">
-                            Explore Department <i class="bi bi-arrow-right"></i>
+                        <a href="{{ url_for('teachers') }}#cse" class="btn btn-primary mt-3" aria-label="Explore the Computer Science & Engineering department and its faculty members">
+                            Explore CSE Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='Computer Science & Engineering') }}" class="btn btn-outline-primary btn-sm" aria-label="View all faculty members of Computer Science & Engineering department">
+                                View CSE Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -144,9 +150,15 @@
                             <span class="badge bg-success me-1">MSc</span>
                             <span class="badge bg-info">PhD</span>
                         </div>
-                        <a href="{{ url_for('teachers') }}#eee" class="btn btn-primary mt-3" aria-label="Learn more about Electrical & Electronic Engineering department">
-                            Explore Department <i class="bi bi-arrow-right"></i>
+                        <a href="{{ url_for('teachers') }}#eee" class="btn btn-primary mt-3" aria-label="Explore the Electrical & Electronic Engineering department and its faculty members">
+                            Explore EEE Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='Electrical & Electronic Engineering') }}" class="btn btn-outline-primary btn-sm" aria-label="View all faculty members of Electrical & Electronic Engineering department">
+                                View EEE Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -165,9 +177,15 @@
                             <span class="badge bg-success me-1">MBA</span>
                             <span class="badge bg-info">PhD</span>
                         </div>
-                        <a href="{{ url_for('teachers') }}#bba" class="btn btn-primary mt-3" aria-label="Learn more about Business Administration department">
-                            Explore Department <i class="bi bi-arrow-right"></i>
+                        <a href="{{ url_for('teachers') }}#bba" class="btn btn-primary mt-3" aria-label="Explore the Business Administration department and its faculty members">
+                            Explore BBA Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='Business Administration') }}" class="btn btn-outline-primary btn-sm" aria-label="View all faculty members of Business Administration department">
+                                View BBA Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -186,9 +204,15 @@
                             <span class="badge bg-success me-1">MSc</span>
                             <span class="badge bg-info">PhD</span>
                         </div>
-                        <a href="{{ url_for('teachers') }}#physics" class="btn btn-primary mt-3" aria-label="Learn more about Physics department">
-                            Explore Department <i class="bi bi-arrow-right"></i>
+                        <a href="{{ url_for('teachers') }}#physics" class="btn btn-primary mt-3" aria-label="Explore the Physics department and its faculty members">
+                            Explore Physics Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='Physics') }}" class="btn btn-outline-primary btn-sm" aria-label="View all faculty members of Physics department">
+                                View Physics Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -207,9 +231,15 @@
                             <span class="badge bg-success me-1">MA</span>
                             <span class="badge bg-info">PhD</span>
                         </div>
-                        <a href="{{ url_for('teachers') }}#english" class="btn btn-primary mt-3" aria-label="Learn more about English department">
-                            Explore Department <i class="bi bi-arrow-right"></i>
+                        <a href="{{ url_for('teachers') }}#english" class="btn btn-primary mt-3" aria-label="Explore the English department and its faculty members">
+                            Explore English Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='English') }}" class="btn btn-outline-primary btn-sm" aria-label="View all faculty members of English department">
+                                View English Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -228,9 +258,15 @@
                             <span class="badge bg-success me-1">MSc</span>
                             <span class="badge bg-info">PhD</span>
                         </div>
-                        <a href="{{ url_for('teachers') }}#math" class="btn btn-primary mt-3" aria-label="Learn more about Mathematics department">
-                            Explore Department <i class="bi bi-arrow-right"></i>
+                        <a href="{{ url_for('teachers') }}#math" class="btn btn-primary mt-3" aria-label="Explore the Mathematics department and its faculty members">
+                            Explore Mathematics Department <i class="bi bi-arrow-right"></i>
                         </a>
+                        <!-- ===== INTERNAL LINK ===== -->
+                        <div class="mt-3">
+                            <a href="{{ url_for('teachers', department='Mathematics') }}" class="btn btn-outline-primary btn-sm" aria-label="View all faculty members of Mathematics department">
+                                View Mathematics Faculty Members <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -239,7 +275,7 @@
         
         <!-- View All Departments Button -->
         <div class="text-center mt-5">
-            <a href="{{ url_for('departments') }}" class="btn btn-outline-primary btn-lg">
+            <a href="{{ url_for('departments') }}" class="btn btn-outline-primary btn-lg" aria-label="View all academic departments of North Bengal University">
                 View All Departments <i class="bi bi-arrow-right"></i>
             </a>
         </div>
@@ -274,7 +310,7 @@
                             <span class="badge bg-primary me-1">PhD</span>
                             <span class="badge bg-secondary">15+ Years</span>
                         </div>
-                        <a href="{{ url_for('teacher_profile', id=4) }}" class="btn btn-outline-primary mt-3">
+                        <a href="{{ url_for('teacher_profile', id=4) }}" class="btn btn-outline-primary mt-3" aria-label="View detailed profile of Dr. Tania Islam, Associate Professor of CSE">
                             <i class="bi bi-person-vcard"></i> View Profile
                         </a>
                     </div>
@@ -299,7 +335,7 @@
                             <span class="badge bg-primary me-1">PhD</span>
                             <span class="badge bg-secondary">20+ Years</span>
                         </div>
-                        <a href="{{ url_for('teacher_profile', id=6) }}" class="btn btn-outline-primary mt-3">
+                        <a href="{{ url_for('teacher_profile', id=6) }}" class="btn btn-outline-primary mt-3" aria-label="View detailed profile of Dr. Mahmud Hasan, Professor of EEE">
                             <i class="bi bi-person-vcard"></i> View Profile
                         </a>
                     </div>
@@ -324,7 +360,7 @@
                             <span class="badge bg-primary me-1">PhD</span>
                             <span class="badge bg-secondary">8+ Years</span>
                         </div>
-                        <a href="{{ url_for('teacher_profile', id=19) }}" class="btn btn-outline-primary mt-3">
+                        <a href="{{ url_for('teacher_profile', id=19) }}" class="btn btn-outline-primary mt-3" aria-label="View detailed profile of Dr. Nusrat Jahan, Assistant Professor of BBA">
                             <i class="bi bi-person-vcard"></i> View Profile
                         </a>
                     </div>
@@ -335,7 +371,7 @@
 
         <!-- View All Teachers Button -->
         <div class="text-center mt-5">
-            <a href="{{ url_for('teachers') }}" class="btn btn-primary btn-lg">
+            <a href="{{ url_for('teachers') }}" class="btn btn-primary btn-lg" aria-label="View all faculty members of North Bengal University">
                 View All Faculty Members <i class="bi bi-arrow-right"></i>
             </a>
         </div>
@@ -363,8 +399,8 @@
                         <h3 class="h4">Admission Open 2026</h3>
                         <p>Applications for undergraduate admission are now open for the Fall 2026 semester.</p>
                         <div class="mt-3">
-                            <a href="{{ url_for('admission') }}" class="btn btn-primary btn-sm">
-                                Read More <i class="bi bi-arrow-right"></i>
+                            <a href="{{ url_for('admission') }}" class="btn btn-primary btn-sm" aria-label="Read full article about Admission Open 2026">
+                                Read Full Article <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
@@ -382,8 +418,8 @@
                         <h3 class="h4">International Seminar on AI</h3>
                         <p>Join our international seminar on Artificial Intelligence and Machine Learning this August.</p>
                         <div class="mt-3">
-                            <a href="{{ url_for('news_detail', id=2) }}" class="btn btn-primary btn-sm">
-                                Read More <i class="bi bi-arrow-right"></i>
+                            <a href="{{ url_for('news_detail', id=2) }}" class="btn btn-primary btn-sm" aria-label="Read full article about International Seminar on AI">
+                                Read Full Article <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
@@ -401,8 +437,8 @@
                         <h3 class="h4">Convocation 2026</h3>
                         <p>The annual convocation ceremony will be held in December 2026. Registration is now open.</p>
                         <div class="mt-3">
-                            <a href="{{ url_for('news_detail', id=3) }}" class="btn btn-primary btn-sm">
-                                Read More <i class="bi bi-arrow-right"></i>
+                            <a href="{{ url_for('news_detail', id=3) }}" class="btn btn-primary btn-sm" aria-label="Read full article about Convocation 2026">
+                                Read Full Article <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
                     </div>
@@ -413,7 +449,7 @@
 
         <!-- View All News Button -->
         <div class="text-center mt-5">
-            <a href="{{ url_for('news') }}" class="btn btn-outline-primary btn-lg">
+            <a href="{{ url_for('news') }}" class="btn btn-outline-primary btn-lg" aria-label="View all news and events of North Bengal University">
                 View All News <i class="bi bi-arrow-right"></i>
             </a>
         </div>
@@ -476,10 +512,10 @@
         <!-- ===== INTERNAL LINK ADDED ===== -->
         <div class="text-center mt-4">
             <p class="text-white-50 mb-3">Join our growing community of learners and researchers</p>
-            <a href="{{ url_for('admission') }}" class="btn btn-warning btn-lg">
+            <a href="{{ url_for('admission') }}" class="btn btn-warning btn-lg" aria-label="Apply now for admission to North Bengal University">
                 Apply Now <i class="bi bi-arrow-right"></i>
             </a>
-            <a href="{{ url_for('departments') }}" class="btn btn-outline-light btn-lg ms-2">
+            <a href="{{ url_for('departments') }}" class="btn btn-outline-light btn-lg ms-2" aria-label="Explore all academic programs at North Bengal University">
                 Explore Programs <i class="bi bi-arrow-right"></i>
             </a>
         </div>
