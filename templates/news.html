@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}News | North Bengal University{% endblock %}
+
+{% block content %}
+
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1>Latest News & Events</h1>
+        <p>Stay updated with the latest university announcements and events.</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- News 1 -->
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h4>Admission Open 2026</h4>
+                        <p>Applications for undergraduate admission are now open for the Fall 2026 semester.</p>
+                        <a href="{{ url_for('news_detail', id=1) }}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News 2 -->
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h4>International Seminar on AI</h4>
+                        <p>Join our international seminar on Artificial Intelligence and Machine Learning.</p>
+                        <a href="{{ url_for('news_detail', id=2) }}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News 3 -->
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h4>Convocation 2026</h4>
+                        <p>The annual convocation ceremony will be held in December 2026.</p>
+                        <a href="{{ url_for('news_detail', id=3) }}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

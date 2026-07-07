@@ -1,0 +1,237 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us | North Bengal University{% endblock %}
+
+{% block description %}Contact North Bengal University for admission, academic information, and student support. Get in touch with our team today.{% endblock %}
+
+{% block keywords %}Contact North Bengal University, NBU Contact, Admission Help, Student Support{% endblock %}
+
+{% block canonical %}/contact{% endblock %}
+
+{% block og_title %}Contact North Bengal University - Get in Touch{% endblock %}
+
+{% block breadcrumb %}Contact Us{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO ===== -->
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Contact Us</h1>
+        <p class="lead">We are always ready to help you. Get in touch with our team.</p>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Contact Information -->
+            <div class="col-lg-5">
+                <div class="card shadow h-100 border-0 p-4">
+                    <div class="card-body">
+                        <h3 class="fw-bold mb-4"><i class="bi bi-info-circle text-primary"></i> Contact Information</h3>
+                        
+                        <div class="d-flex mb-4">
+                            <div class="contact-icon me-3">
+                                <i class="bi bi-geo-alt-fill text-primary fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold">Address</h6>
+                                <p class="text-muted">North Bengal University<br>Barishal, Bangladesh</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mb-4">
+                            <div class="contact-icon me-3">
+                                <i class="bi bi-telephone-fill text-success fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold">Phone</h6>
+                                <p class="text-muted">+8801712345678</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mb-4">
+                            <div class="contact-icon me-3">
+                                <i class="bi bi-envelope-fill text-danger fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold">Email</h6>
+                                <p class="text-muted">info@northbengaluniversity.edu</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mb-4">
+                            <div class="contact-icon me-3">
+                                <i class="bi bi-clock-fill text-warning fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold">Office Hours</h6>
+                                <p class="text-muted">Saturday - Thursday<br>9:00 AM - 5:00 PM</p>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Social Media -->
+                        <h6 class="fw-bold mb-3">Follow Us</h6>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="btn btn-outline-primary rounded-circle" aria-label="Facebook">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-info rounded-circle" aria-label="LinkedIn">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-danger rounded-circle" aria-label="YouTube">
+                                <i class="bi bi-youtube"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-dark rounded-circle" aria-label="Twitter">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+                <div class="card shadow border-0 p-4">
+                    <div class="card-body">
+                        <h3 class="fw-bold mb-4"><i class="bi bi-envelope-paper text-primary"></i> Send Us a Message</h3>
+                        <p class="text-muted">We will get back to you within 24 hours.</p>
+
+                        <!-- Flash Messages -->
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+                        <form method="POST" action="{{ url_for('contact') }}">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" name="name" class="form-control" placeholder="Your full name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
+                                    <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Phone Number</label>
+                                    <input type="text" name="phone" class="form-control" placeholder="+8801XXXXXXXXX">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Subject <span class="text-danger">*</span></label>
+                                    <input type="text" name="subject" class="form-control" placeholder="What is this about?" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Message <span class="text-danger">*</span></label>
+                                    <textarea name="message" class="form-control" rows="5" placeholder="Write your message here..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                                        <i class="bi bi-send"></i> Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== MAP ===== -->
+<section class="pb-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">Find Us on Map</h2>
+        <div class="card shadow border-0">
+            <div class="ratio ratio-16x9">
+                <iframe 
+                    src="https://www.google.com/maps?q=Barishal,Bangladesh&output=embed" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    title="North Bengal University Location">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">Frequently Asked Questions</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                How can I apply for admission?
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                Complete the online admission form available on our <a href="{{ url_for('admission') }}">Admission Page</a>. You will need to submit academic documents and appear for the admission test.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                What are the office hours?
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                Saturday to Thursday, 9:00 AM to 5:00 PM. The university remains closed on Fridays and public holidays.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Where is the university located?
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                Our main campus is located in Barishal, Bangladesh. You can find us on the map above.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                How can I contact the admission office?
+                            </button>
+                        </h3>
+                        <div id="faq4" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                You can contact the admission office at <strong>+8801712345678</strong> or email <strong>info@northbengaluniversity.edu</strong>.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://northbengaluniversity.edu/sitemap.xml

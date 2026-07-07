@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Teacher | Admin{% endblock %}
+
+{% block content %}
+
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1>Edit Teacher</h1>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Name <span class="text-danger">*</span></label>
+                                    <input type="text" name="name" class="form-control" value="{{ teacher.name }}" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Designation <span class="text-danger">*</span></label>
+                                    <input type="text" name="designation" class="form-control" value="{{ teacher.designation }}" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Department <span class="text-danger">*</span></label>
+                                    <select name="department" class="form-select" required>
+                                        <option value="">Select Department</option>
+                                        <option value="Computer Science & Engineering" {% if teacher.department == 'Computer Science & Engineering' %}selected{% endif %}>Computer Science & Engineering</option>
+                                        <option value="Electrical & Electronic Engineering" {% if teacher.department == 'Electrical & Electronic Engineering' %}selected{% endif %}>Electrical & Electronic Engineering</option>
+                                        <option value="Physics" {% if teacher.department == 'physics' %}selected{% endif %}>Physics</option>
+                                        <option value="Business Administration" {% if teacher.department == 'Business Administration' %}selected{% endif %}>Business Administration</option>
+                                        <option value="English" {% if teacher.department == 'English' %}selected{% endif %}>English</option>
+                                        <option value="Mathematics" {% if teacher.department == 'Mathematics' %}selected{% endif %}>Mathematics</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email <span class="text-danger">*</span></label>
+                                    <input type="email" name="email" class="form-control" value="{{ teacher.email }}" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" name="phone" class="form-control" value="{{ teacher.phone or '' }}">
+                                </div>
+                            </div>
+
+                            <!-- ===== PROFILE IMAGE ===== -->
+                            <div class="mb-3">
+                                <label class="form-label">Profile Image</label>
+                                
+                                <!-- Current Image Preview -->
+                                {% if teacher.image and teacher.image != 'teacher_default.jpg' %}
+                                <div class="mb-2">
+                                    <img src="{{ url_for('static', filename='images/' ~ teacher.image) }}" 
+                                         alt="Current Image" 
+                                         style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid #ddd;">
+                                    <p class="text-muted small mt-1">Current Image</p>
+                                </div>
+                                {% else %}
+                                <div class="mb-2">
+                                    <img src="{{ url_for('static', filename='images/teacher_default.jpg') }}" 
+                                         alt="Default Image" 
+                                         style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid #ddd;">
+                                    <p class="text-muted small mt-1">Default Image (No image uploaded)</p>
+                                </div>
+                                {% endif %}
+
+                                <input type="file" name="image" class="form-control" accept="image/*">
+                                <small class="text-muted">Leave empty to keep current image. Supported: JPG, PNG, GIF, WebP (Max: 5MB)</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Bio</label>
+                                <textarea name="bio" class="form-control" rows="4">{{ teacher.bio or '' }}</textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-success">Update Teacher</button>
+                            <a href="{{ url_for('admin_teachers') }}" class="btn btn-secondary">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}FAQ | North Bengal University{% endblock %}
+
+{% block content %}
+
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="accordion" id="faq">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#one">
+                        How can I apply for admission?
+                    </button>
+                </h2>
+                <div id="one" class="accordion-collapse collapse show">
+                    <div class="accordion-body">Complete the online admission form.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#two">
+                        Where is the campus located?
+                    </button>
+                </h2>
+                <div id="two" class="accordion-collapse collapse">
+                    <div class="accordion-body">Barishal, Bangladesh.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

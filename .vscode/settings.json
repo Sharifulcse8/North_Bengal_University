@@ -1,0 +1,12 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "database": "${workspaceFolder:SEO Lab Report}/instance/university_db",
+      "name": "university_db",
+      "group": "Default"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}

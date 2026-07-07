@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}{{ teacher.name }} | Faculty Profile{% endblock %}
+
+{% block content %}
+
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1>{{ teacher.name }}</h1>
+        <p>{{ teacher.designation }}</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <!-- ===== IMAGE WITH UI AVATARS FALLBACK ===== -->
+                                <img src="{{ url_for('static', filename='images/' ~ teacher.image) }}" 
+                                     class="img-fluid rounded-circle shadow" 
+                                     alt="{{ teacher.name }}"
+                                     style="width: 200px; height: 200px; object-fit: cover;"
+                                     onerror="this.src='https://ui-avatars.com/api/?name={{ teacher.name }}&background=0D6EFD&color=fff&size=200'">
+                            </div>
+                            <div class="col-md-8">
+                                <h4>Profile Information</h4>
+                                <hr>
+                                <p><strong>Name:</strong> {{ teacher.name }}</p>
+                                <p><strong>Designation:</strong> {{ teacher.designation }}</p>
+                                <p><strong>Department:</strong> {{ teacher.department }}</p>
+                                <p><strong>Email:</strong> {{ teacher.email }}</p>
+                                <p><strong>Phone:</strong> {{ teacher.phone or 'N/A' }}</p>
+                                <p><strong>Biography:</strong></p>
+                                <p>{{ teacher.bio or 'No biography available.' }}</p>
+                                <a href="{{ url_for('teachers') }}" class="btn btn-primary">Back to Faculty</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

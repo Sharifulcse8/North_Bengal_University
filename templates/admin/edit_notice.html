@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Notice | Admin{% endblock %}
+
+{% block content %}
+
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1>Edit Notice</h1>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <form method="POST">
+                            <div class="mb-3">
+                                <label class="form-label">Title <span class="text-danger">*</span></label>
+                                <input type="text" name="title" class="form-control" value="{{ notice.title }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Category</label>
+                                <select name="category" class="form-select">
+                                    <option value="General" {% if notice.category == 'General' %}selected{% endif %}>General</option>
+                                    <option value="Admission" {% if notice.category == 'Admission' %}selected{% endif %}>Admission</option>
+                                    <option value="Exam" {% if notice.category == 'Exam' %}selected{% endif %}>Exam</option>
+                                    <option value="Event" {% if notice.category == 'Event' %}selected{% endif %}>Event</option>
+                                    <option value="Scholarship" {% if notice.category == 'Scholarship' %}selected{% endif %}>Scholarship</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Content <span class="text-danger">*</span></label>
+                                <textarea name="content" class="form-control" rows="6" required>{{ notice.content }}</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Update Notice</button>
+                            <a href="{{ url_for('admin_notices') }}" class="btn btn-secondary">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Notices | North Bengal University{% endblock %}
+
+{% block content %}
+
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1>Notices & Announcements</h1>
+        <p>Stay updated with the latest news.</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h4>Admission Open 2026</h4>
+                        <p>Applications are now open for Fall 2026.</p>
+                        <small>Posted: 1 July 2026</small>
+                        <br>
+                        <a href="{{ url_for('admission') }}" class="btn btn-primary btn-sm mt-2">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h4>Exam Schedule 2026</h4>
+                        <p>Final exam schedule for Spring 2026 is published.</p>
+                        <small>Posted: 15 June 2026</small>
+                        <br>
+                        <a href="{{ url_for('exam_schedule') }}" class="btn btn-primary btn-sm mt-2">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

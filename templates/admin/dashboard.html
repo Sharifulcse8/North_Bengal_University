@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard | North Bengal University{% endblock %}
+
+{% block content %}
+
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <p>Manage university content from one place.</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Notices -->
+            <div class="col-md-4">
+                <div class="card shadow h-100 text-center p-4">
+                    <h2 class="text-primary">{{ notice_count }}</h2>
+                    <p>Total Notices</p>
+                    <a href="{{ url_for('admin_notices') }}" class="btn btn-primary">Manage Notices</a>
+                </div>
+            </div>
+
+            <!-- Teachers -->
+            <div class="col-md-4">
+                <div class="card shadow h-100 text-center p-4">
+                    <h2 class="text-primary">{{ teacher_count }}</h2>
+                    <p>Total Teachers</p>
+                    <a href="{{ url_for('admin_teachers') }}" class="btn btn-primary">Manage Teachers</a>
+                </div>
+            </div>
+
+            <!-- Students -->
+            <div class="col-md-4">
+                <div class="card shadow h-100 text-center p-4">
+                    <h2 class="text-primary">{{ student_count }}</h2>
+                    <p>Total Students</p>
+                    <a href="{{ url_for('admin_students') }}" class="btn btn-primary">Manage Students</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row g-4 mt-4">
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-body text-center">
+                        <h4><i class="bi bi-plus-circle"></i> Add Notice</h4>
+                        <p>Post new notices and announcements.</p>
+                        <a href="{{ url_for('add_notice') }}" class="btn btn-success">Add Notice</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-body text-center">
+                        <h4><i class="bi bi-person-plus"></i> Add Teacher</h4>
+                        <p>Add new faculty members.</p>
+                        <a href="{{ url_for('add_teacher') }}" class="btn btn-success">Add Teacher</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow">
+                    <div class="card-body text-center">
+                        <h4><i class="bi bi-person-plus"></i> Add Student</h4>
+                        <p>Add new students to the database.</p>
+                        <a href="{{ url_for('add_student') }}" class="btn btn-success">Add Student</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

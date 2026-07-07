@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+
+{% block title %}Teachers | North Bengal University{% endblock %}
+
+{% block content %}
+
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1>Faculty Members</h1>
+        <p>Meet our highly qualified and experienced teachers.</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+
+        <!-- ===== CSE ===== -->
+        <div id="cse" class="mb-5 {% if department and department != 'Computer Science & Engineering' %}d-none{% endif %}">
+            <h3 class="text-primary border-bottom pb-2">Computer Science & Engineering (CSE)</h3>
+            <div class="row">
+                {% for teacher in teachers %}
+                    {% if teacher.department == 'Computer Science & Engineering' %}
+                    <div class="col-md-4">
+                        <div class="card shadow">
+                            <img src="{{ url_for('static', filename='images/' ~ teacher.image) }}" 
+                                 class="card-img-top" 
+                                 alt="{{ teacher.name }}"
+                                 onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
+                            <div class="card-body">
+                                <h4>{{ teacher.name }}</h4>
+                                <p>{{ teacher.designation }}</p>
+                                <p>Department of {{ teacher.department }}</p>
+                                <p>Email: {{ teacher.email }}</p>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-center">No teachers found in this department.</p>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if department and department == 'Computer Science & Engineering' %}
+            <div class="text-center mt-3">
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- ===== EEE ===== -->
+        <div id="eee" class="mb-5 {% if department and department != 'Electrical & Electronic Engineering' %}d-none{% endif %}">
+            <h3 class="text-primary border-bottom pb-2">Electrical & Electronic Engineering (EEE)</h3>
+            <div class="row">
+                {% for teacher in teachers %}
+                    {% if teacher.department == 'Electrical & Electronic Engineering' %}
+                    <div class="col-md-4">
+                        <div class="card shadow">
+                            <img src="{{ url_for('static', filename='images/' ~ teacher.image) }}" 
+                                 class="card-img-top" 
+                                 alt="{{ teacher.name }}"
+                                 onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
+                            <div class="card-body">
+                                <h4>{{ teacher.name }}</h4>
+                                <p>{{ teacher.designation }}</p>
+                                <p>Department of {{ teacher.department }}</p>
+                                <p>Email: {{ teacher.email }}</p>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-center">No teachers found in this department.</p>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if department and department == 'Electrical & Electronic Engineering' %}
+            <div class="text-center mt-3">
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- ===== PHYSICS ===== -->
+        <div id="physics" class="mb-5 {% if department and department != 'Physics' %}d-none{% endif %}">
+            <h3 class="text-primary border-bottom pb-2">Physics</h3>
+            <div class="row">
+                {% for teacher in teachers %}
+                    {% if teacher.department == 'Physics' %}
+                    <div class="col-md-4">
+                        <div class="card shadow">
+                            <img src="{{ url_for('static', filename='images/' ~ teacher.image) }}" 
+                                 class="card-img-top" 
+                                 alt="{{ teacher.name }}"
+                                 onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
+                            <div class="card-body">
+                                <h4>{{ teacher.name }}</h4>
+                                <p>{{ teacher.designation }}</p>
+                                <p>Department of {{ teacher.department }}</p>
+                                <p>Email: {{ teacher.email }}</p>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-center">No teachers found in this department.</p>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if department and department == 'Physics' %}
+            <div class="text-center mt-3">
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- ===== BBA ===== -->
+        <div id="bba" class="mb-5 {% if department and department != 'Business Administration' %}d-none{% endif %}">
+            <h3 class="text-primary border-bottom pb-2">Business Administration (BBA)</h3>
+            <div class="row">
+                {% for teacher in teachers %}
+                    {% if teacher.department == 'Business Administration' %}
+                    <div class="col-md-4">
+                        <div class="card shadow">
+                            <img src="{{ url_for('static', filename='images/' ~ teacher.image) }}" 
+                                 class="card-img-top" 
+                                 alt="{{ teacher.name }}"
+                                 onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
+                            <div class="card-body">
+                                <h4>{{ teacher.name }}</h4>
+                                <p>{{ teacher.designation }}</p>
+                                <p>Department of {{ teacher.department }}</p>
+                                <p>Email: {{ teacher.email }}</p>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-center">No teachers found in this department.</p>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if department and department == 'Business Administration' %}
+            <div class="text-center mt-3">
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- ===== ENGLISH ===== -->
+        <div id="english" class="mb-5 {% if department and department != 'English' %}d-none{% endif %}">
+            <h3 class="text-primary border-bottom pb-2">English</h3>
+            <div class="row">
+                {% for teacher in teachers %}
+                    {% if teacher.department == 'English' %}
+                    <div class="col-md-4">
+                        <div class="card shadow">
+                            <img src="{{ url_for('static', filename='images/' ~ teacher.image) }}" 
+                                 class="card-img-top" 
+                                 alt="{{ teacher.name }}"
+                                 onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
+                            <div class="card-body">
+                                <h4>{{ teacher.name }}</h4>
+                                <p>{{ teacher.designation }}</p>
+                                <p>Department of {{ teacher.department }}</p>
+                                <p>Email: {{ teacher.email }}</p>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-center">No teachers found in this department.</p>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if department and department == 'English' %}
+            <div class="text-center mt-3">
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- ===== MATHEMATICS ===== -->
+        <div id="math" class="mb-5 {% if department and department != 'Mathematics' %}d-none{% endif %}">
+            <h3 class="text-primary border-bottom pb-2">Mathematics</h3>
+            <div class="row">
+                {% for teacher in teachers %}
+                    {% if teacher.department == 'Mathematics' %}
+                    <div class="col-md-4">
+                        <div class="card shadow">
+                            <img src="{{ url_for('static', filename='images/' ~ teacher.image) }}" 
+                                 class="card-img-top" 
+                                 alt="{{ teacher.name }}"
+                                 onerror="this.src='{{ url_for('static', filename='images/teacher_default.jpg') }}'">
+                            <div class="card-body">
+                                <h4>{{ teacher.name }}</h4>
+                                <p>{{ teacher.designation }}</p>
+                                <p>Department of {{ teacher.department }}</p>
+                                <p>Email: {{ teacher.email }}</p>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <div class="col-12">
+                        <p class="text-center">No teachers found in this department.</p>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if department and department == 'Mathematics' %}
+            <div class="text-center mt-3">
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Library | North Bengal University{% endblock %}
+
+{% block content %}
+
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1>Central Library</h1>
+        <p>Knowledge Hub of North Bengal University</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="{{ url_for('static', filename='images/uni_lib.png') }}" class="img-fluid rounded shadow" alt="Library">
+            </div>
+            <div class="col-lg-6">
+                <h2>About Our Library</h2>
+                <ul>
+                    <li>Over 50,000+ books and journals</li>
+                    <li>Digital library with e-books</li>
+                    <li>Reading rooms with 500+ seating</li>
+                    <li>24/7 online access</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

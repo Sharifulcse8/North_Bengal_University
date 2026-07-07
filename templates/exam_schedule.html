@@ -1,0 +1,868 @@
+{% extends "base.html" %}
+
+{% block title %}Exam Schedule 2026 | North Bengal University{% endblock %}
+
+{% block content %}
+
+<section class="bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1>Exam Schedule 2026</h1>
+        <p>Department, Year & Semester wise final examination schedule for Spring 2026.</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+
+        <!-- ===== Department Filter ===== -->
+        <div class="row mb-4">
+            <div class="col-md-4 mx-auto">
+                <label class="form-label fw-bold">Select Department</label>
+                <select id="deptSelect" class="form-select" onchange="showSchedule()">
+                    <option value="cse">Computer Science & Engineering (CSE)</option>
+                    <option value="eee">Electrical & Electronic Engineering (EEE)</option>
+                    <option value="bba">Business Administration (BBA)</option>
+                    <option value="civil">Civil Engineering</option>
+                    <option value="english">English</option>
+                    <option value="math">Mathematics</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ===== CSE SCHEDULE ===== -->
+        <!-- ========================================== -->
+        <div id="cse" class="dept-schedule">
+            <h3 class="text-primary">Computer Science & Engineering (CSE)</h3>
+            
+            <!-- 1st Year -->
+            <div class="card mt-3">
+                <div class="card-header bg-info text-white fw-bold">1st Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CSE-101</td><td>Introduction to Programming</td><td>15 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-102</td><td>Discrete Mathematics</td><td>16 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>ENG-101</td><td>English Composition</td><td>17 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>MATH-101</td><td>Calculus I</td><td>18 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>PHY-101</td><td>Physics</td><td>19 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CSE-103</td><td>Object Oriented Programming</td><td>20 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-104</td><td>Data Structures</td><td>21 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>MATH-102</td><td>Linear Algebra</td><td>22 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>ENG-102</td><td>Communication Skills</td><td>23 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>PHY-102</td><td>Modern Physics</td><td>24 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2nd Year -->
+            <div class="card mt-3">
+                <div class="card-header bg-warning fw-bold">2nd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CSE-201</td><td>Algorithms</td><td>20 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-202</td><td>Database Management Systems</td><td>21 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-203</td><td>Computer Networks</td><td>22 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>MATH-201</td><td>Differential Equations</td><td>23 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>STAT-201</td><td>Probability & Statistics</td><td>24 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CSE-204</td><td>Operating Systems</td><td>25 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-205</td><td>Software Engineering</td><td>26 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-206</td><td>Web Technologies</td><td>27 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>MATH-202</td><td>Numerical Analysis</td><td>28 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>ECO-201</td><td>Engineering Economics</td><td>29 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 3rd Year -->
+            <div class="card mt-3">
+                <div class="card-header bg-success text-white fw-bold">3rd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CSE-301</td><td>Artificial Intelligence</td><td>25 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-302</td><td>Machine Learning</td><td>26 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-303</td><td>Computer Architecture</td><td>27 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-304</td><td>Cyber Security</td><td>28 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-305</td><td>Cloud Computing</td><td>29 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CSE-306</td><td>Data Science</td><td>30 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-307</td><td>Mobile App Development</td><td>31 Jan 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-308</td><td>Distributed Systems</td><td>1 Feb 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>MGT-301</td><td>Project Management</td><td>2 Feb 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>LAW-301</td><td>Cyber Law</td><td>3 Feb 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 4th Year -->
+            <div class="card mt-3">
+                <div class="card-header bg-danger text-white fw-bold">4th Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CSE-401</td><td>Advanced AI</td><td>30 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-402</td><td>Blockchain Technology</td><td>31 Aug 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-403</td><td>Quantum Computing</td><td>1 Sep 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-404</td><td>Research Methodology</td><td>2 Sep 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>ETH-401</td><td>Professional Ethics</td><td>3 Sep 2026</td><td>10:00 AM - 12:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CSE-405</td><td>Thesis / Project</td><td>5 Feb 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>CSE-406</td><td>Advanced Networking</td><td>6 Feb 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>MGT-401</td><td>Innovation & Entrepreneurship</td><td>7 Feb 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>STA-401</td><td>Advanced Statistics</td><td>8 Feb 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                            <tr><td>SEM-401</td><td>Seminar</td><td>9 Feb 2027</td><td>10:00 AM - 12:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ===== EEE SCHEDULE ===== -->
+        <!-- ========================================== -->
+        <div id="eee" class="dept-schedule" style="display:none;">
+            <h3 class="text-primary">Electrical & Electronic Engineering (EEE)</h3>
+            
+            <div class="card mt-3">
+                <div class="card-header bg-info text-white fw-bold">1st Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EEE-101</td><td>Basic Electrical Engineering</td><td>15 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-102</td><td>Circuit Analysis</td><td>16 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-103</td><td>Electronic Devices</td><td>17 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>MATH-101</td><td>Calculus I</td><td>18 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>PHY-101</td><td>Engineering Physics</td><td>19 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EEE-104</td><td>Electrical Machines</td><td>20 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-105</td><td>Power Systems</td><td>21 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-106</td><td>Digital Electronics</td><td>22 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>MATH-102</td><td>Linear Algebra</td><td>23 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>CHEM-101</td><td>Engineering Chemistry</td><td>24 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-warning fw-bold">2nd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EEE-201</td><td>Electronics I</td><td>20 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-202</td><td>Electrical Machines II</td><td>21 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-203</td><td>Power Electronics</td><td>22 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>MATH-201</td><td>Differential Equations</td><td>23 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>STAT-201</td><td>Probability & Statistics</td><td>24 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EEE-204</td><td>Control Systems</td><td>25 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-205</td><td>Renewable Energy</td><td>26 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-206</td><td>Embedded Systems</td><td>27 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>MATH-202</td><td>Numerical Analysis</td><td>28 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>ECE-201</td><td>Communication Engineering</td><td>29 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-success text-white fw-bold">3rd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EEE-301</td><td>Advanced Power Systems</td><td>25 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-302</td><td>Smart Grid</td><td>26 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-303</td><td>Telecommunication</td><td>27 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-304</td><td>VLSI Design</td><td>28 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-305</td><td>Electric Drives</td><td>29 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EEE-306</td><td>Energy Management</td><td>30 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-307</td><td>Power Quality</td><td>31 Jan 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-308</td><td>Digital Signal Processing</td><td>1 Feb 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>MGT-301</td><td>Project Management</td><td>2 Feb 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>LAW-301</td><td>Energy Law</td><td>3 Feb 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-danger text-white fw-bold">4th Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EEE-401</td><td>Advanced Power Electronics</td><td>30 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-402</td><td>Electric Vehicle Technology</td><td>31 Aug 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-403</td><td>IoT for Energy</td><td>1 Sep 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-404</td><td>Research Methodology</td><td>2 Sep 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>ETH-401</td><td>Professional Ethics</td><td>3 Sep 2026</td><td>02:00 PM - 04:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>EEE-405</td><td>Thesis / Project</td><td>5 Feb 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>EEE-406</td><td>Renewable Energy Systems</td><td>6 Feb 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>MGT-401</td><td>Innovation & Entrepreneurship</td><td>7 Feb 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>STA-401</td><td>Advanced Statistics</td><td>8 Feb 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                            <tr><td>SEM-401</td><td>Seminar</td><td>9 Feb 2027</td><td>02:00 PM - 04:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ===== BBA SCHEDULE ===== -->
+        <!-- ========================================== -->
+        <div id="bba" class="dept-schedule" style="display:none;">
+            <h3 class="text-primary">Business Administration (BBA)</h3>
+            
+            <div class="card mt-3">
+                <div class="card-header bg-info text-white fw-bold">1st Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>BBA-101</td><td>Principles of Management</td><td>15 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-102</td><td>Financial Accounting</td><td>16 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-103</td><td>Microeconomics</td><td>17 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-104</td><td>Business Mathematics</td><td>18 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>ENG-101</td><td>Business English</td><td>19 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>BBA-105</td><td>Marketing Management</td><td>20 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-106</td><td>Organizational Behavior</td><td>21 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-107</td><td>Business Statistics</td><td>22 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-108</td><td>Macroeconomics</td><td>23 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>COM-101</td><td>Business Communication</td><td>24 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-warning fw-bold">2nd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>BBA-201</td><td>Corporate Finance</td><td>20 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-202</td><td>Human Resource Management</td><td>21 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-203</td><td>Entrepreneurship</td><td>22 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-204</td><td>Business Law</td><td>23 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>MGT-201</td><td>Operations Management</td><td>24 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>BBA-205</td><td>Strategic Management</td><td>25 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-206</td><td>International Business</td><td>26 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-207</td><td>Business Ethics</td><td>27 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-208</td><td>Supply Chain Management</td><td>28 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>MKT-201</td><td>Consumer Behavior</td><td>29 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-success text-white fw-bold">3rd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>BBA-301</td><td>Advanced Corporate Finance</td><td>25 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-302</td><td>Organizational Leadership</td><td>26 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-303</td><td>Business Analytics</td><td>27 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-304</td><td>Investment Analysis</td><td>28 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-305</td><td>E-Commerce</td><td>29 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>BBA-306</td><td>Digital Marketing</td><td>30 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-307</td><td>Management Accounting</td><td>31 Jan 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-308</td><td>Business Research Methods</td><td>1 Feb 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>ECO-301</td><td>Managerial Economics</td><td>2 Feb 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>LAW-301</td><td>Corporate Law</td><td>3 Feb 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-danger text-white fw-bold">4th Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>BBA-401</td><td>Strategic Leadership</td><td>30 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-402</td><td>Global Business Strategy</td><td>31 Aug 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-403</td><td>Business Sustainability</td><td>1 Sep 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-404</td><td>Research Methodology</td><td>2 Sep 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>ETH-401</td><td>Business Ethics</td><td>3 Sep 2026</td><td>09:00 AM - 11:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>BBA-405</td><td>Thesis / Project</td><td>5 Feb 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>BBA-406</td><td>Entrepreneurship Development</td><td>6 Feb 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>MGT-401</td><td>Innovation Management</td><td>7 Feb 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>STA-401</td><td>Business Forecasting</td><td>8 Feb 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                            <tr><td>SEM-401</td><td>Seminar</td><td>9 Feb 2027</td><td>09:00 AM - 11:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ===== CIVIL ENGINEERING SCHEDULE ===== -->
+        <!-- ========================================== -->
+        <div id="civil" class="dept-schedule" style="display:none;">
+            <h3 class="text-primary">Civil Engineering</h3>
+            
+            <div class="card mt-3">
+                <div class="card-header bg-info text-white fw-bold">1st Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CE-101</td><td>Engineering Mechanics</td><td>15 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-102</td><td>Surveying</td><td>16 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-103</td><td>Building Materials</td><td>17 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-104</td><td>Engineering Drawing</td><td>18 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>MATH-101</td><td>Calculus I</td><td>19 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CE-105</td><td>Structural Analysis I</td><td>20 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-106</td><td>Transportation Engineering</td><td>21 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-107</td><td>Geotechnical Engineering</td><td>22 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-108</td><td>Environmental Engineering</td><td>23 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>MATH-102</td><td>Linear Algebra</td><td>24 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-warning fw-bold">2nd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CE-201</td><td>Structural Analysis II</td><td>20 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-202</td><td>Design of Concrete Structures</td><td>21 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-203</td><td>Hydrology</td><td>22 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-204</td><td>Urban Planning</td><td>23 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>MATH-201</td><td>Differential Equations</td><td>24 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CE-205</td><td>Design of Steel Structures</td><td>25 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-206</td><td>Foundation Engineering</td><td>26 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-207</td><td>Water Resources</td><td>27 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-208</td><td>Construction Management</td><td>28 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>STAT-201</td><td>Probability & Statistics</td><td>29 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-success text-white fw-bold">3rd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CE-301</td><td>Advanced Structural Design</td><td>25 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-302</td><td>Smart Infrastructure</td><td>26 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-303</td><td>Earthquake Engineering</td><td>27 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-304</td><td>Project Planning & Control</td><td>28 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-305</td><td>Transportation Planning</td><td>29 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CE-306</td><td>Sustainable Construction</td><td>30 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-307</td><td>GIS & Remote Sensing</td><td>31 Jan 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-308</td><td>Construction Safety</td><td>1 Feb 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>MGT-301</td><td>Project Management</td><td>2 Feb 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>LAW-301</td><td>Construction Law</td><td>3 Feb 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-danger text-white fw-bold">4th Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CE-401</td><td>Advanced Structural Systems</td><td>30 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-402</td><td>Urban Infrastructure</td><td>31 Aug 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-403</td><td>Environmental Impact Assessment</td><td>1 Sep 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-404</td><td>Research Methodology</td><td>2 Sep 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>ETH-401</td><td>Professional Ethics</td><td>3 Sep 2026</td><td>03:00 PM - 05:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>CE-405</td><td>Thesis / Project</td><td>5 Feb 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>CE-406</td><td>Infrastructure Planning</td><td>6 Feb 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>MGT-401</td><td>Innovation & Entrepreneurship</td><td>7 Feb 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>STA-401</td><td>Advanced Statistics</td><td>8 Feb 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                            <tr><td>SEM-401</td><td>Seminar</td><td>9 Feb 2027</td><td>03:00 PM - 05:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ===== ENGLISH SCHEDULE ===== -->
+        <!-- ========================================== -->
+        <div id="english" class="dept-schedule" style="display:none;">
+            <h3 class="text-primary">Department of English</h3>
+            
+            <div class="card mt-3">
+                <div class="card-header bg-info text-white fw-bold">1st Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ENG-101</td><td>English Composition</td><td>15 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-102</td><td>Introduction to Literature</td><td>16 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-103</td><td>History of English Literature</td><td>17 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-104</td><td>Communication Skills</td><td>18 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>HIS-101</td><td>World History</td><td>19 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ENG-105</td><td>Poetry</td><td>20 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-106</td><td>Drama</td><td>21 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-107</td><td>Linguistics</td><td>22 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-108</td><td>Creative Writing</td><td>23 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>PHI-101</td><td>Philosophy</td><td>24 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-warning fw-bold">2nd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ENG-201</td><td>American Literature</td><td>20 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-202</td><td>Postcolonial Literature</td><td>21 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-203</td><td>Modern Literature</td><td>22 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-204</td><td>Critical Theory</td><td>23 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>POL-201</td><td>Political Science</td><td>24 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ENG-205</td><td>World Literature</td><td>25 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-206</td><td>Fiction</td><td>26 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-207</td><td>Literary Criticism</td><td>27 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-208</td><td>Professional Writing</td><td>28 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ART-201</td><td>Art History</td><td>29 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-success text-white fw-bold">3rd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ENG-301</td><td>Renaissance Literature</td><td>25 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-302</td><td>Romantic Poetry</td><td>26 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-303</td><td>Victorian Novel</td><td>27 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-304</td><td>Modern Drama</td><td>28 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-305</td><td>Gender Studies</td><td>29 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ENG-306</td><td>Contemporary Literature</td><td>30 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-307</td><td>Literary Theory</td><td>31 Jan 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-308</td><td>Postmodern Literature</td><td>1 Feb 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>MGT-301</td><td>Communication Management</td><td>2 Feb 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>LAW-301</td><td>Media Law</td><td>3 Feb 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-danger text-white fw-bold">4th Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ENG-401</td><td>Shakespeare Studies</td><td>30 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-402</td><td>Comparative Literature</td><td>31 Aug 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-403</td><td>Creative Non-Fiction</td><td>1 Sep 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-404</td><td>Research Methodology</td><td>2 Sep 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ETH-401</td><td>Professional Ethics</td><td>3 Sep 2026</td><td>11:00 AM - 01:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ENG-405</td><td>Thesis / Project</td><td>5 Feb 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>ENG-406</td><td>Advanced Writing</td><td>6 Feb 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>MGT-401</td><td>Innovation & Entrepreneurship</td><td>7 Feb 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>STA-401</td><td>Research Statistics</td><td>8 Feb 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                            <tr><td>SEM-401</td><td>Seminar</td><td>9 Feb 2027</td><td>11:00 AM - 01:00 PM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ===== MATHEMATICS SCHEDULE ===== -->
+        <!-- ========================================== -->
+        <div id="math" class="dept-schedule" style="display:none;">
+            <h3 class="text-primary">Department of Mathematics</h3>
+            
+            <div class="card mt-3">
+                <div class="card-header bg-info text-white fw-bold">1st Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>MATH-101</td><td>Calculus I</td><td>15 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-102</td><td>Linear Algebra</td><td>16 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-103</td><td>Analytical Geometry</td><td>17 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-104</td><td>Number Theory</td><td>18 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>PHY-101</td><td>Physics I</td><td>19 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>MATH-105</td><td>Calculus II</td><td>20 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-106</td><td>Differential Equations</td><td>21 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-107</td><td>Complex Analysis</td><td>22 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-108</td><td>Vector Analysis</td><td>23 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>CHEM-101</td><td>Chemistry</td><td>24 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-warning fw-bold">2nd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>MATH-201</td><td>Real Analysis I</td><td>20 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-202</td><td>Abstract Algebra I</td><td>21 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-203</td><td>Numerical Analysis</td><td>22 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-204</td><td>Probability Theory</td><td>23 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>STA-201</td><td>Statistics I</td><td>24 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>MATH-205</td><td>Real Analysis II</td><td>25 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-206</td><td>Abstract Algebra II</td><td>26 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-207</td><td>Differential Geometry</td><td>27 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-208</td><td>Operations Research</td><td>28 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>ECO-201</td><td>Mathematical Economics</td><td>29 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-success text-white fw-bold">3rd Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>MATH-301</td><td>Functional Analysis</td><td>25 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-302</td><td>Topology</td><td>26 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-303</td><td>Mathematical Physics</td><td>27 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-304</td><td>Graph Theory</td><td>28 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-305</td><td>Optimization Theory</td><td>29 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>MATH-306</td><td>Advanced Calculus</td><td>30 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-307</td><td>Algebraic Topology</td><td>31 Jan 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-308</td><td>Financial Mathematics</td><td>1 Feb 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MGT-301</td><td>Project Management</td><td>2 Feb 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>LAW-301</td><td>Intellectual Property Law</td><td>3 Feb 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-danger text-white fw-bold">4th Year</div>
+                <div class="card-body">
+                    <h5>Odd Semester (Fall 2026)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>MATH-401</td><td>Advanced Real Analysis</td><td>30 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-402</td><td>Advanced Abstract Algebra</td><td>31 Aug 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-403</td><td>Computational Mathematics</td><td>1 Sep 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-404</td><td>Research Methodology</td><td>2 Sep 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>ETH-401</td><td>Professional Ethics</td><td>3 Sep 2026</td><td>08:00 AM - 10:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                    <h5 class="mt-3">Even Semester (Spring 2027)</h5>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-primary">
+                            <tr><th>Course Code</th><th>Course Title</th><th>Exam Date</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>MATH-405</td><td>Thesis / Project</td><td>5 Feb 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MATH-406</td><td>Data Science Mathematics</td><td>6 Feb 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>MGT-401</td><td>Innovation & Entrepreneurship</td><td>7 Feb 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>STA-401</td><td>Advanced Statistics</td><td>8 Feb 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                            <tr><td>SEM-401</td><td>Seminar</td><td>9 Feb 2027</td><td>08:00 AM - 10:00 AM</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== Back Button ===== -->
+        <div class="text-center mt-4">
+            <a href="{{ url_for('notice') }}" class="btn btn-secondary btn-lg">
+                <i class="bi bi-arrow-left"></i> Back to Notices
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== JavaScript ===== -->
+<script>
+function showSchedule() {
+    var dept = document.getElementById("deptSelect").value;
+    var schedules = document.getElementsByClassName("dept-schedule");
+    for (var i = 0; i < schedules.length; i++) {
+        schedules[i].style.display = "none";
+    }
+    document.getElementById(dept).style.display = "block";
+}
+</script>
+
+{% endblock %}
