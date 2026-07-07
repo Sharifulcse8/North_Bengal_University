@@ -42,7 +42,9 @@
                             View Exam Schedule <i class="bi bi-arrow-right"></i>
                         </a>
                         {% else %}
-                        <a href="#" class="btn btn-primary btn-sm mt-2" aria-label="View details for {{ notice.title }}">View Details</a>
+                      <a href="#" class="btn btn-primary btn-sm mt-2" aria-label="View full details about {{ notice.title }}">
+    View Full Details of {{ notice.title }} <i class="bi bi-arrow-right"></i>
+</a>
                         {% endif %}
                     </div>
                 </article>
