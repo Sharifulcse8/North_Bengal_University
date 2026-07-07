@@ -3,45 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}North Bengal University{% endblock %}</title>
     
-    <!-- ====== ORGANIZATION SCHEMA (JSON-LD) ====== -->
+    <!-- ===== DYNAMIC TITLE ===== -->
+    <title>{% block title %}North Bengal University{% endblock %} | North Bengal University</title>
+    
+    <!-- ===== META DESCRIPTION ===== -->
+    <meta name="description" content="{% block description %}North Bengal University is a leading private university in Bangladesh offering quality education, research opportunities, and career-focused programs in CSE, EEE, BBA, Physics, English, and Mathematics.{% endblock %}">
+    
+    <!-- ===== META KEYWORDS ===== -->
+    <meta name="keywords" content="{% block keywords %}North Bengal University, Private University Bangladesh, CSE, EEE, BBA, Physics, English, Mathematics, Higher Education, Admission 2026{% endblock %}">
+    
+    <!-- ===== AUTHOR & ROBOTS ===== -->
+    <meta name="author" content="North Bengal University">
+    <meta name="robots" content="index, follow">
+    
+    <!-- ===== CANONICAL URL ===== -->
+    <link rel="canonical" href="https://northbengaluniversity.edu{% block canonical %}/{% endblock %}">
+    
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
+    
+    <!-- ===== OG TAGS (Facebook/LinkedIn/WhatsApp) ===== -->
+    <meta property="og:title" content="{% block og_title %}North Bengal University - Best Private University in Bangladesh{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}North Bengal University is a leading private university in Bangladesh offering quality education, research, and career-focused programs.{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://northbengaluniversity.edu{% block og_url %}/{% endblock %}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/og-image.jpg', _external=True) }}">
+    <meta property="og:site_name" content="North Bengal University">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- ===== TWITTER CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}North Bengal University - Best Private University{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Quality Education, Research and Innovation at North Bengal University. Apply now for admission 2026.{% endblock %}">
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/og-image.jpg', _external=True) }}">
+    
+    <!-- ===== SCHEMA MARKUP (JSON-LD) ===== -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "CollegeOrUniversity",
-      "name": "North Bengal University",
-      "alternateName": "NBU",
-      "url": "{{ url_for('home', _external=True) }}",
-      "logo": "{{ url_for('static', filename='images/logo.png', _external=True) }}",
-      "description": "North Bengal University is a leading private university in Bangladesh offering undergraduate and graduate programs in Science, Engineering, Business, and Arts.",
-      "foundingDate": "2005-01-15",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Barishal",
-        "addressCountry": "Bangladesh"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+8801712345678",
-        "contactType": "Admissions",
-        "availableLanguage": ["English", "Bengali"]
-      },
-      "sameAs": [
-        "https://www.facebook.com/northbengaluniversity",
-        "https://www.linkedin.com/school/northbengaluniversity"
-      ]
+        "@context": "https://schema.org",
+        "@type": "CollegeOrUniversity",
+        "name": "North Bengal University",
+        "alternateName": "NBU",
+        "url": "{{ url_for('home', _external=True) }}",
+        "logo": "{{ url_for('static', filename='images/logo.png', _external=True) }}",
+        "description": "North Bengal University is a leading private university in Bangladesh offering undergraduate and graduate programs in Science, Engineering, Business, and Arts.",
+        "foundingDate": "2005-01-15",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Barishal",
+            "addressCountry": "Bangladesh"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+8801712345678",
+            "contactType": "Admissions",
+            "availableLanguage": ["English", "Bengali"]
+        },
+        "sameAs": [
+            "https://www.facebook.com/northbengaluniversity",
+            "https://www.linkedin.com/school/northbengaluniversity"
+        ]
     }
     </script>
     
-    <!-- Block for page-specific JSON-LD (e.g., NewsArticle, Course, etc.) -->
-    {% block json_ld %}{% endblock %}
-    
+    <!-- ===== BOOTSTRAP CSS ===== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     
-    <!-- Extra head block for additional meta tags -->
     {% block extra_head %}{% endblock %}
 </head>
 <body>
