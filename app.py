@@ -160,7 +160,7 @@ def notice():
     db.close()
     return render_template('notice.html', notices=notices)
 
-@app.route('/exam-schedule-2026')
+@app.route('/exam-schedule')
 def exam_schedule():
     return render_template('exam_schedule.html')
 
