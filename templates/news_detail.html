@@ -33,7 +33,9 @@
                         <p>{{ news.content }}</p>
                         <hr>
                         <p><strong>Published:</strong> {{ news.date }}</p>
-                        <a href="{{ url_for('news') }}" class="btn btn-primary">Back to News</a>
+                        <a href="{{ url_for('news') }}" class="btn btn-primary" aria-label="Return to all news and events">
+                            <i class="bi bi-arrow-left"></i> Back to All News
+                        </a>
                     </div>
                 </article>
             </div>

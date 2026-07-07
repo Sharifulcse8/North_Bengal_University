@@ -1,51 +1,48 @@
 {% extends "base.html" %}
 
-{% block title %}News | North Bengal University{% endblock %}
+{% block title %}Latest News & Events | North Bengal University{% endblock %}
+
+{% block description %}Stay updated with the latest news and events from North Bengal University including admission updates, seminars, and convocation ceremonies.{% endblock %}
+
+{% block keywords %}Latest News, University News, Events, Seminar, Convocation, North Bengal University{% endblock %}
+
+{% block canonical %}/news{% endblock %}
+
+{% block og_title %}Latest News & Events | North Bengal University{% endblock %}
+
+{% block breadcrumb %}News{% endblock %}
 
 {% block content %}
 
+<!-- ===== HERO ===== -->
 <section class="bg-primary text-white text-center py-5">
     <div class="container">
-        <h1>Latest News & Events</h1>
-        <p>Stay updated with the latest university announcements and events.</p>
+        <h1 class="display-4 fw-bold">Latest News &amp; Events</h1>
+        <p class="lead">Stay updated with the latest university announcements and events</p>
     </div>
 </section>
 
+<!-- ===== NEWS LIST ===== -->
 <section class="py-5">
     <div class="container">
         <div class="row">
-            <!-- News 1 -->
-            <div class="col-md-4">
-                <div class="card shadow">
+            {% for notice in notices %}
+            <div class="col-md-4 mb-4">
+                <article class="card shadow h-100">
                     <div class="card-body">
-                        <h4>Admission Open 2026</h4>
-                        <p>Applications for undergraduate admission are now open for the Fall 2026 semester.</p>
-                        <a href="{{ url_for('news_detail', id=1) }}" class="btn btn-primary">Read More</a>
+                        <h2 class="h4">{{ notice.title }}</h2>
+                        <p>{{ notice.content[:150] }}{% if notice.content|length > 150 %}...{% endif %}</p>
+                        <a href="{{ url_for('news_detail', id=notice.id) }}" class="btn btn-primary" aria-label="Read full article about {{ notice.title }}">
+                            Read Full Article: {{ notice.title }} <i class="bi bi-arrow-right"></i>
+                        </a>
                     </div>
-                </div>
+                </article>
             </div>
-
-            <!-- News 2 -->
-            <div class="col-md-4">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h4>International Seminar on AI</h4>
-                        <p>Join our international seminar on Artificial Intelligence and Machine Learning.</p>
-                        <a href="{{ url_for('news_detail', id=2) }}" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
+            {% else %}
+            <div class="col-12">
+                <p class="text-center">No news found.</p>
             </div>
-
-            <!-- News 3 -->
-            <div class="col-md-4">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h4>Convocation 2026</h4>
-                        <p>The annual convocation ceremony will be held in December 2026.</p>
-                        <a href="{{ url_for('news_detail', id=3) }}" class="btn btn-primary">Read More</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

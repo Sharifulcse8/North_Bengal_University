@@ -43,7 +43,9 @@
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>
-                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary" aria-label="View full profile of {{ teacher.name }}">
+                                    View Profile of {{ teacher.name }}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -56,7 +58,7 @@
             </div>
             {% if department and department == 'Computer Science & Engineering' %}
             <div class="text-center mt-3">
-                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary" aria-label="Show all departments">Show All Departments</a>
             </div>
             {% endif %}
         </div>
@@ -78,7 +80,9 @@
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>
-                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary" aria-label="View full profile of {{ teacher.name }}">
+                                    View Profile of {{ teacher.name }}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -91,7 +95,7 @@
             </div>
             {% if department and department == 'Electrical & Electronic Engineering' %}
             <div class="text-center mt-3">
-                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary" aria-label="Show all departments">Show All Departments</a>
             </div>
             {% endif %}
         </div>
@@ -113,7 +117,9 @@
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>
-                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary" aria-label="View full profile of {{ teacher.name }}">
+                                    View Profile of {{ teacher.name }}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -126,7 +132,7 @@
             </div>
             {% if department and department == 'Physics' %}
             <div class="text-center mt-3">
-                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary" aria-label="Show all departments">Show All Departments</a>
             </div>
             {% endif %}
         </div>
@@ -148,7 +154,9 @@
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>
-                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary" aria-label="View full profile of {{ teacher.name }}">
+                                    View Profile of {{ teacher.name }}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -161,7 +169,7 @@
             </div>
             {% if department and department == 'Business Administration' %}
             <div class="text-center mt-3">
-                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary" aria-label="Show all departments">Show All Departments</a>
             </div>
             {% endif %}
         </div>
@@ -183,7 +191,9 @@
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>
-                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary" aria-label="View full profile of {{ teacher.name }}">
+                                    View Profile of {{ teacher.name }}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -196,7 +206,7 @@
             </div>
             {% if department and department == 'English' %}
             <div class="text-center mt-3">
-                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary" aria-label="Show all departments">Show All Departments</a>
             </div>
             {% endif %}
         </div>
@@ -218,7 +228,9 @@
                                 <p>{{ teacher.designation }}</p>
                                 <p>Department of {{ teacher.department }}</p>
                                 <p>Email: {{ teacher.email }}</p>
-                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary">View Profile</a>
+                                <a href="{{ url_for('teacher_profile', id=teacher.id) }}" class="btn btn-primary" aria-label="View full profile of {{ teacher.name }}">
+                                    View Profile of {{ teacher.name }}
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -231,7 +243,7 @@
             </div>
             {% if department and department == 'Mathematics' %}
             <div class="text-center mt-3">
-                <a href="{{ url_for('teachers') }}" class="btn btn-secondary">Show All Departments</a>
+                <a href="{{ url_for('teachers') }}" class="btn btn-secondary" aria-label="Show all departments">Show All Departments</a>
             </div>
             {% endif %}
         </div>

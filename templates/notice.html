@@ -26,26 +26,32 @@
 <section class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            {% for notice in notices %}
+            <div class="col-md-6 mb-4">
                 <article class="card shadow">
                     <div class="card-body">
-                        <h2 class="h4">Admission Open 2026</h2>
-                        <p>Applications are now open for Fall 2026.</p>
-                        <p><small class="text-muted">Posted: 1 July 2026</small></p>
-                        <a href="{{ url_for('admission') }}" class="btn btn-primary btn-sm mt-2">View Details</a>
+                        <h2 class="h4">{{ notice.title }}</h2>
+                        <p>{{ notice.content }}</p>
+                        <p><small class="text-muted">Posted: {{ notice.date_posted }}</small></p>
+                        {% if 'admission' in notice.title.lower() %}
+                        <a href="{{ url_for('admission') }}" class="btn btn-primary btn-sm mt-2" aria-label="View admission details">
+                            View Admission Details <i class="bi bi-arrow-right"></i>
+                        </a>
+                        {% elif 'exam' in notice.title.lower() %}
+                        <a href="{{ url_for('exam_schedule') }}" class="btn btn-primary btn-sm mt-2" aria-label="View exam schedule">
+                            View Exam Schedule <i class="bi bi-arrow-right"></i>
+                        </a>
+                        {% else %}
+                        <a href="#" class="btn btn-primary btn-sm mt-2" aria-label="View notice details">View Details</a>
+                        {% endif %}
                     </div>
                 </article>
             </div>
-            <div class="col-md-6">
-                <article class="card shadow">
-                    <div class="card-body">
-                        <h2 class="h4">Exam Schedule 2026</h2>
-                        <p>Final exam schedule for Spring 2026 is published.</p>
-                        <p><small class="text-muted">Posted: 15 June 2026</small></p>
-                        <a href="{{ url_for('exam_schedule') }}" class="btn btn-primary btn-sm mt-2">View Details</a>
-                    </div>
-                </article>
+            {% else %}
+            <div class="col-12">
+                <p class="text-center">No notices found.</p>
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
