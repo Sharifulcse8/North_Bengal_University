@@ -42,7 +42,12 @@
                             View Exam Schedule <i class="bi bi-arrow-right"></i>
                         </a>
                         {% else %}
-                        <a href="#" class="btn btn-primary btn-sm mt-2" aria-label="View details for {{ notice.title }}">View {{ notice.title }} Details</a>
+                         <a href="{{ url_for('news_detail', id=notice.id) }}" 
+                               class="btn btn-info btn-sm" 
+                               target="_blank"
+                               title="View Notice">
+                                <i class="fas fa-eye"></i>View {{ notice.title }} Details
+                            </a>
                         {% endif %}
                     </div>
                 </article>
