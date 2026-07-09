@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
-from database import get_db
+from database import get_db, init_db
 import os
 from werkzeug.utils import secure_filename
+import time
 
 app = Flask(__name__)
 app.secret_key = '395196975bb354506f064d37c61cb819'
@@ -12,14 +13,24 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+# Create upload folder if not exists
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# ================= INIT DATABASE =================
+# Initialize database on first run
+init_db()
 
 # ================= STATIC PAGES =================
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    db = get_db()
+    notices = db.execute('SELECT * FROM notices WHERE is_active = 1 ORDER BY date_posted DESC LIMIT 5').fetchall()
+    db.close()
+    return render_template('index.html', notices=notices)
 
 @app.route('/about-us')
 def about():
@@ -173,7 +184,17 @@ def news_detail(id):
     db.close()
     
     if not news_item:
-        return render_template('news_detail.html', news={'title': 'News Not Found', 'content': 'The requested news article does not exist.', 'date': ''}, id=id)
+        # Return a 404 page or redirect
+        return render_template('news_detail.html', 
+                             news={'title': 'News Not Found', 
+                                   'content': 'The requested news article does not exist.', 
+                                   'date_posted': ''}, 
+                             id=id)
+    
+    # Convert date to string for display
+    if news_item['date_posted']:
+        news_item = dict(news_item)
+        news_item['date'] = news_item['date_posted']
     
     return render_template('news_detail.html', news=news_item, id=id)
 
@@ -231,12 +252,23 @@ def add_notice():
     if request.method == 'POST':
         title = request.form.get('title')
         content = request.form.get('content')
+        short_desc = request.form.get('short_desc', content[:150] if content else '')
         category = request.form.get('category', 'General')
+        
+        # Image upload
+        image_filename = None
+        if 'image' in request.files:
+            file = request.files['image']
+            if file and file.filename and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                unique_name = f"notice_{int(time.time())}_{filename}"
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], unique_name))
+                image_filename = unique_name
         
         db = get_db()
         db.execute(
-            'INSERT INTO notices (title, content, category) VALUES (?, ?, ?)',
-            (title, content, category)
+            'INSERT INTO notices (title, content, short_desc, category, image) VALUES (?, ?, ?, ?, ?)',
+            (title, content, short_desc, category, image_filename)
         )
         db.commit()
         db.close()
@@ -254,11 +286,28 @@ def edit_notice(id):
     if request.method == 'POST':
         title = request.form.get('title')
         content = request.form.get('content')
+        short_desc = request.form.get('short_desc', content[:150] if content else '')
         category = request.form.get('category', 'General')
         
+        # Image upload
+        image_filename = notice['image']
+        if 'image' in request.files:
+            file = request.files['image']
+            if file and file.filename and allowed_file(file.filename):
+                # Delete old image if exists
+                if image_filename:
+                    old_path = os.path.join(app.config['UPLOAD_FOLDER'], image_filename)
+                    if os.path.exists(old_path):
+                        os.remove(old_path)
+                
+                filename = secure_filename(file.filename)
+                unique_name = f"notice_{int(time.time())}_{filename}"
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], unique_name))
+                image_filename = unique_name
+        
         db.execute(
-            'UPDATE notices SET title = ?, content = ?, category = ? WHERE id = ?',
-            (title, content, category, id)
+            'UPDATE notices SET title = ?, content = ?, short_desc = ?, category = ?, image = ? WHERE id = ?',
+            (title, content, short_desc, category, image_filename, id)
         )
         db.commit()
         db.close()
@@ -272,6 +321,13 @@ def edit_notice(id):
 @app.route('/admin/notice/delete/<int:id>')
 def delete_notice(id):
     db = get_db()
+    # Get image before deleting
+    notice = db.execute('SELECT image FROM notices WHERE id = ?', (id,)).fetchone()
+    if notice and notice['image']:
+        image_path = os.path.join(app.config['UPLOAD_FOLDER'], notice['image'])
+        if os.path.exists(image_path):
+            os.remove(image_path)
+    
     db.execute('UPDATE notices SET is_active = 0 WHERE id = ?', (id,))
     db.commit()
     db.close()
@@ -297,13 +353,12 @@ def add_teacher():
         phone = request.form.get('phone', '')
         bio = request.form.get('bio', '')
         
-        # ===== IMAGE UPLOAD =====
+        # Image upload
         image_filename = 'teacher_default.jpg'
         if 'image' in request.files:
             file = request.files['image']
             if file and file.filename and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
-                import time
                 unique_name = f"teacher_{int(time.time())}_{filename}"
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], unique_name))
                 image_filename = unique_name
@@ -335,7 +390,7 @@ def edit_teacher(id):
         phone = request.form.get('phone', '')
         bio = request.form.get('bio', '')
         
-        # ===== IMAGE UPLOAD =====
+        # Image upload
         image_filename = teacher['image'] if teacher['image'] else 'teacher_default.jpg'
         if 'image' in request.files:
             file = request.files['image']
@@ -347,13 +402,19 @@ def edit_teacher(id):
                         os.remove(old_path)
                 
                 filename = secure_filename(file.filename)
-                import time
                 unique_name = f"teacher_{int(time.time())}_{filename}"
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], unique_name))
                 image_filename = unique_name
         
         db.execute(
-            '''UPDATE teachers SET name = ?, designation = ?, department = ?, email = ?, phone = ?, bio = ?, image = ? 
+            '''UPDATE teachers SET 
+                name = ?, 
+                designation = ?, 
+                department = ?, 
+                email = ?, 
+                phone = ?, 
+                bio = ?, 
+                image = ? 
                WHERE id = ?''',
             (name, designation, department, email, phone, bio, image_filename, id)
         )
@@ -369,7 +430,7 @@ def edit_teacher(id):
 @app.route('/admin/teacher/delete/<int:id>')
 def delete_teacher(id):
     db = get_db()
-    # Get image filename before deleting
+    # Get image before deleting
     teacher = db.execute('SELECT image FROM teachers WHERE id = ?', (id,)).fetchone()
     if teacher and teacher['image'] and teacher['image'] != 'teacher_default.jpg':
         image_path = os.path.join(app.config['UPLOAD_FOLDER'], teacher['image'])
@@ -403,13 +464,12 @@ def add_student():
         phone = request.form.get('phone', '')
         bio = request.form.get('bio', '')
         
-        # ===== IMAGE UPLOAD =====
+        # Image upload
         image_filename = 'student_default.jpg'
         if 'image' in request.files:
             file = request.files['image']
             if file and file.filename and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
-                import time
                 unique_name = f"student_{int(time.time())}_{filename}"
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], unique_name))
                 image_filename = unique_name
@@ -443,7 +503,7 @@ def edit_student(id):
         phone = request.form.get('phone', '')
         bio = request.form.get('bio', '')
         
-        # ===== IMAGE UPLOAD =====
+        # Image upload
         image_filename = student['image'] if student['image'] else 'student_default.jpg'
         if 'image' in request.files:
             file = request.files['image']
@@ -455,7 +515,6 @@ def edit_student(id):
                         os.remove(old_path)
                 
                 filename = secure_filename(file.filename)
-                import time
                 unique_name = f"student_{int(time.time())}_{filename}"
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], unique_name))
                 image_filename = unique_name
@@ -486,7 +545,7 @@ def edit_student(id):
 @app.route('/admin/student/delete/<int:id>')
 def delete_student(id):
     db = get_db()
-    # Get image filename before deleting
+    # Get image before deleting
     student = db.execute('SELECT image FROM students WHERE id = ?', (id,)).fetchone()
     if student and student['image'] and student['image'] != 'student_default.jpg':
         image_path = os.path.join(app.config['UPLOAD_FOLDER'], student['image'])
@@ -512,4 +571,6 @@ def robots():
 # ================= RUN =================
 
 if __name__ == '__main__':
+    # Ensure database is initialized
+    init_db()
     app.run(debug=True, host='0.0.0.0', port=5000)

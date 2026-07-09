@@ -2,24 +2,11 @@
 
 {% block title %}{{ news.title }} | News Detail | North Bengal University{% endblock %}
 
-{% block description %}{{ news.title }} - Read the full news article from North Bengal University. Published on {{ news.date }}.{% endblock %}
+{% block description %}{{ news.title }} - Read the full news article from North Bengal University. Published on {{ news.date if news.date else news.date_posted }}.{% endblock %}
 
 {% block keywords %}{{ news.title }}, North Bengal University News, University News, Event{% endblock %}
 
-{% block canonical %}/news/{{ id }}{% endblock %}
-
-{% block og_title %}{{ news.title }} - North Bengal University News{% endblock %}
-
-{% block breadcrumb %}News Detail{% endblock %}
-{% extends "base.html" %}
-
-{% block title %}{{ news.title }} | News Detail | North Bengal University{% endblock %}
-
-{% block description %}{{ news.title }} - Read the full news article from North Bengal University. Published on {{ news.date }}.{% endblock %}
-
-{% block keywords %}{{ news.title }}, North Bengal University News, University News, Event{% endblock %}
-
-{% block canonical %}/news/{{ id }}{% endblock %}
+{% block canonical %}/news-details/{{ id }}{% endblock %}
 
 {% block og_title %}{{ news.title }} - North Bengal University News{% endblock %}
 
@@ -31,7 +18,23 @@
 <section class="bg-primary text-white text-center py-5">
     <div class="container">
         <h1 class="display-4 fw-bold">{{ news.title }}</h1>
-        <p class="lead">Published on: {{ news.date }}</p>
+        <p class="lead">
+            <i class="far fa-calendar-alt"></i> Published on: 
+            {% if news.date %}
+                {{ news.date.strftime('%d %B, %Y at %I:%M %p') if news.date is not string else news.date }}
+            {% elif news.date_posted %}
+                {{ news.date_posted.strftime('%d %B, %Y at %I:%M %p') if news.date_posted is not string else news.date_posted }}
+            {% else %}
+                Date not available
+            {% endif %}
+        </p>
+        {% if news.category %}
+        <p>
+            <span class="badge bg-warning text-dark">
+                <i class="fas fa-tag"></i> {{ news.category }}
+            </span>
+        </p>
+        {% endif %}
     </div>
 </section>
 
@@ -40,48 +43,48 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <article class="card shadow">
-                    <div class="card-body">
-                        <h2 class="h4">{{ news.title }}</h2>
-                        <p>{{ news.content }}</p>
+                <article class="card shadow-lg">
+                    {% if news.image %}
+                    <img src="{{ url_for('static', filename='images/' + news.image) }}" 
+                         class="card-img-top" alt="{{ news.title }}" 
+                         style="max-height: 400px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body p-4">
+                        <h2 class="h4 mb-3">{{ news.title }}</h2>
+                        
+                        <div class="news-content">
+                            {% if news.content %}
+                                {{ news.content|safe }}
+                            {% else %}
+                                <p class="text-muted">No content available for this notice.</p>
+                            {% endif %}
+                        </div>
+                        
                         <hr>
-                        <p><strong>Published:</strong> {{ news.date }}</p>
-                        <a href="{{ url_for('news') }}" class="btn btn-primary" aria-label="Return to all news and events">
-                            <i class="bi bi-arrow-left"></i> Back to All News
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-</section>
-
-{% endblock %}
-
-{% block content %}
-
-<!-- ===== HERO ===== -->
-<section class="bg-primary text-white text-center py-5">
-    <div class="container">
-        <h1 class="display-4 fw-bold">{{ news.title }}</h1>
-        <p class="lead">Published on: {{ news.date }}</p>
-    </div>
-</section>
-
-<!-- ===== NEWS CONTENT ===== -->
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <article class="card shadow">
-                    <div class="card-body">
-                        <h2 class="h4">{{ news.title }}</h2>
-                        <p>{{ news.content }}</p>
-                        <hr>
-                        <p><strong>Published:</strong> {{ news.date }}</p>
-                        <a href="{{ url_for('news') }}" class="btn btn-primary" aria-label="Return to all news and events">
-                            <i class="bi bi-arrow-left"></i> Back to All News
-                        </a>
+                        
+                        <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <div>
+                                <p class="mb-0">
+                                    <strong><i class="far fa-calendar-alt"></i> Published:</strong> 
+                                    {% if news.date %}
+                                        {{ news.date.strftime('%d %B, %Y at %I:%M %p') if news.date is not string else news.date }}
+                                    {% elif news.date_posted %}
+                                        {{ news.date_posted.strftime('%d %B, %Y at %I:%M %p') if news.date_posted is not string else news.date_posted }}
+                                    {% else %}
+                                        Date not available
+                                    {% endif %}
+                                </p>
+                                {% if news.category %}
+                                <p class="mb-0">
+                                    <strong><i class="fas fa-tag"></i> Category:</strong> 
+                                    {{ news.category }}
+                                </p>
+                                {% endif %}
+                            </div>
+                            <a href="{{ url_for('news') }}" class="btn btn-primary mt-2 mt-md-0">
+                                <i class="fas fa-arrow-left"></i> Back to All News
+                            </a>
+                        </div>
                     </div>
                 </article>
             </div>
