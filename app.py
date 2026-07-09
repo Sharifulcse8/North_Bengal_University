@@ -273,13 +273,14 @@ def add_notice():
         # ===== SAVE TO DATABASE =====
         db = get_db()
         db.execute(
-            'INSERT INTO notices (title, content, short_desc, category, image) VALUES (?, ?, ?, ?, ?)',
+            '''INSERT INTO notices (title, content, short_desc, category, image) 
+               VALUES (?, ?, ?, ?, ?)''',
             (title, content, short_desc, category, image_filename)
         )
         db.commit()
         db.close()
         
-        flash('✅ Notice added successfully!', 'success')
+        flash('Notice added successfully!', 'success')
         return redirect(url_for('admin_notices'))
     
     return render_template('admin/add_notice.html')
@@ -289,56 +290,67 @@ def edit_notice(id):
     db = get_db()
     notice = db.execute('SELECT * FROM notices WHERE id = ?', (id,)).fetchone()
     
-    if request.method == 'POST':
-        title = request.form.get('title')
-        content = request.form.get('content')
-        short_desc = request.form.get('short_desc', content[:150] if content else '')
-        category = request.form.get('category', 'General')
-        
-        # Image upload
-        image_filename = notice['image']
-        if 'image' in request.files:
-            file = request.files['image']
-            if file and file.filename and allowed_file(file.filename):
-                # Delete old image if exists
-                if image_filename:
-                    old_path = os.path.join(app.config['UPLOAD_FOLDER'], image_filename)
-                    if os.path.exists(old_path):
-                        os.remove(old_path)
-                
-                filename = secure_filename(file.filename)
-                unique_name = f"notice_{int(time.time())}_{filename}"
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], unique_name))
-                image_filename = unique_name
-        
-        db.execute(
-            'UPDATE notices SET title = ?, content = ?, short_desc = ?, category = ?, image = ? WHERE id = ?',
-            (title, content, short_desc, category, image_filename, id)
-        )
-        db.commit()
-        db.close()
-        
-        flash('Notice updated successfully!', 'success')
+    if not notice:
+        flash('❌ Notice not found!', 'danger')
         return redirect(url_for('admin_notices'))
+    
+    if request.method == 'POST':
+        try:
+            title = request.form.get('title', '').strip()
+            content = request.form.get('content', '').strip()
+            short_desc = request.form.get('short_desc', '').strip()
+            category = request.form.get('category', 'General')
+            
+            if not title or not content:
+                flash('❌ Title and Content are required!', 'danger')
+                return redirect(url_for('edit_notice', id=id))
+            
+            # If short_desc is empty, take first 150 characters from content
+            if not short_desc and content:
+                short_desc = content[:150] + ('...' if len(content) > 150 else '')
+            
+            # ===== IMAGE UPLOAD =====
+            image_filename = notice['image']
+            if 'image' in request.files:
+                file = request.files['image']
+                if file and file.filename and allowed_file(file.filename):
+                    # Delete old image if exists
+                    if image_filename:
+                        old_path = os.path.join(app.config['UPLOAD_FOLDER'], image_filename)
+                        if os.path.exists(old_path):
+                            os.remove(old_path)
+                            print(f"Old image deleted: {old_path}")
+                    
+                    filename = secure_filename(file.filename)
+                    unique_name = f"notice_{int(time.time())}_{filename}"
+                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], unique_name))
+                    image_filename = unique_name
+                    print(f"New image saved: {image_filename}")
+            
+            # ===== UPDATE DATABASE =====
+            db.execute(
+                '''UPDATE notices SET 
+                    title = ?, 
+                    content = ?, 
+                    short_desc = ?, 
+                    category = ?, 
+                    image = ? 
+                   WHERE id = ?''',
+                (title, content, short_desc, category, image_filename, id)
+            )
+            db.commit()
+            db.close()
+            
+            flash('Notice updated successfully!', 'success')
+            return redirect(url_for('admin_notices'))
+            
+        except Exception as e:
+            print(f"❌ Error: {e}")
+            flash(f'❌ Error: {str(e)}', 'danger')
+            return redirect(url_for('edit_notice', id=id))
     
     db.close()
     return render_template('admin/edit_notice.html', notice=notice)
-
-@app.route('/admin/notice/delete/<int:id>')
-def delete_notice(id):
-    db = get_db()
-    # Get image before deleting
-    notice = db.execute('SELECT image FROM notices WHERE id = ?', (id,)).fetchone()
-    if notice and notice['image']:
-        image_path = os.path.join(app.config['UPLOAD_FOLDER'], notice['image'])
-        if os.path.exists(image_path):
-            os.remove(image_path)
-    
-    db.execute('UPDATE notices SET is_active = 0 WHERE id = ?', (id,))
-    db.commit()
-    db.close()
-    flash('Notice deleted successfully!', 'success')
-    return redirect(url_for('admin_notices'))
 
 # ===== TEACHER CRUD =====
 

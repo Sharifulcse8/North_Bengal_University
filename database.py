@@ -10,8 +10,31 @@ def get_db():
     conn.row_factory = sqlite3.Row
     return conn
 
+def add_short_desc_column():
+    """Add short_desc column to notices table if not exists"""
+    conn = get_db()
+    cursor = conn.cursor()
+    
+    try:
+        # Check if short_desc column exists
+        cursor.execute("PRAGMA table_info(notices)")
+        columns = [col[1] for col in cursor.fetchall()]
+        
+        if 'short_desc' not in columns:
+            print("📌 Adding short_desc column to notices table...")
+            cursor.execute('ALTER TABLE notices ADD COLUMN short_desc TEXT DEFAULT ""')
+            conn.commit()
+            print("✅ short_desc column added successfully!")
+        else:
+            print("✅ short_desc column already exists.")
+            
+    except Exception as e:
+        print(f"❌ Error: {e}")
+    
+    conn.close()
+
 def init_db():
-    """create database table"""
+    """create database tables if not exists"""
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     conn = get_db()
     cursor = conn.cursor()
@@ -78,6 +101,6 @@ def init_db():
     conn.close()
     print("✅ Database initialized successfully!")
 
-# ===== RUN ONCE TO INITIALIZE =====
 if __name__ == '__main__':
     init_db()
+    add_short_desc_column()  # Add short_desc column if not exists
