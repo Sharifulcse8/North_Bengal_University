@@ -6,7 +6,8 @@
 
 <section class="bg-primary text-white text-center py-5">
     <div class="container">
-        <h1>Add New Notice</h1>
+        <h1><i class="fas fa-plus-circle"></i> Add New Notice</h1>
+        <p class="lead">Publish a new announcement or news</p>
     </div>
 </section>
 
@@ -15,28 +16,75 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card shadow">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="fas fa-edit"></i> Notice Form</h5>
+                    </div>
                     <div class="card-body">
-                        <form method="POST">
+                        <!-- ===== IMPORTANT: enctype="multipart/form-data" ===== -->
+                        <form method="POST" enctype="multipart/form-data">
+                            
+                            <!-- ===== TITLE ===== -->
                             <div class="mb-3">
                                 <label class="form-label">Title <span class="text-danger">*</span></label>
-                                <input type="text" name="title" class="form-control" required>
+                                <input type="text" name="title" class="form-control" placeholder="Enter notice title" required>
                             </div>
+                            
+                            <!-- ===== CATEGORY ===== -->
                             <div class="mb-3">
                                 <label class="form-label">Category</label>
                                 <select name="category" class="form-select">
-                                    <option value="General">General</option>
-                                    <option value="Admission">Admission</option>
-                                    <option value="Exam">Exam</option>
-                                    <option value="Event">Event</option>
-                                    <option value="Scholarship">Scholarship</option>
+                                    <option value="General">📌 General</option>
+                                    <option value="Admission">🎓 Admission</option>
+                                    <option value="Exam">📝 Exam</option>
+                                    <option value="Event">🎉 Event</option>
+                                    <option value="Scholarship">💰 Scholarship</option>
+                                    <option value="Seminar">🎤 Seminar</option>
+                                    <option value="Notice">📢 Notice</option>
                                 </select>
                             </div>
+                            
+                            <!-- ===== SHORT DESCRIPTION ===== -->
+                            <div class="mb-3">
+                                <label class="form-label">Short Description</label>
+                                <textarea name="short_desc" class="form-control" rows="2" 
+                                          placeholder="Brief summary (will appear in notice cards)"></textarea>
+                                <small class="text-muted">If left empty, first 150 characters of content will be used.</small>
+                            </div>
+                            
+                            <!-- ===== CONTENT ===== -->
                             <div class="mb-3">
                                 <label class="form-label">Content <span class="text-danger">*</span></label>
-                                <textarea name="content" class="form-control" rows="6" required></textarea>
+                                <textarea name="content" class="form-control" rows="8" 
+                                          placeholder="Write full article here. You can use HTML tags." required></textarea>
+                                <small class="text-muted">You can use <code>&lt;br&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code> etc.</small>
                             </div>
-                            <button type="submit" class="btn btn-success">Publish Notice</button>
-                            <a href="{{ url_for('admin_notices') }}" class="btn btn-secondary">Cancel</a>
+                            
+                            <!-- ===== IMAGE UPLOAD ===== -->
+                            <div class="mb-3">
+                                <label class="form-label">Featured Image</label>
+                                <input type="file" name="image" class="form-control" accept="image/*">
+                                <small class="text-muted">Supported: PNG, JPG, JPEG, GIF, WEBP (Max: 16MB)</small>
+                            </div>
+                            
+                            <!-- ===== PREVIEW (Optional) ===== -->
+                            <div class="mb-3" id="imagePreview" style="display:none;">
+                                <label class="form-label">Image Preview</label>
+                                <div>
+                                    <img id="previewImg" src="#" alt="Preview" style="max-height: 150px; border-radius: 8px; border: 1px solid #ddd; padding: 5px;">
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <!-- ===== BUTTONS ===== -->
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save"></i> Publish Notice
+                                </button>
+                                <a href="{{ url_for('admin_notices') }}" class="btn btn-secondary">
+                                    <i class="fas fa-times"></i> Cancel
+                                </a>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -44,5 +92,27 @@
         </div>
     </div>
 </section>
+
+<!-- ===== JavaScript for Image Preview ===== -->
+{% block extra_js %}
+<script>
+    document.querySelector('input[name="image"]').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        const previewDiv = document.getElementById('imagePreview');
+        const previewImg = document.getElementById('previewImg');
+        
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                previewImg.src = event.target.result;
+                previewDiv.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            previewDiv.style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}
 
 {% endblock %}
