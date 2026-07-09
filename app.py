@@ -352,6 +352,33 @@ def edit_notice(id):
     db.close()
     return render_template('admin/edit_notice.html', notice=notice)
 
+# ===== DELETE NOTICE (FIX) =====
+@app.route('/admin/notice/delete/<int:id>')
+def delete_notice(id):
+    try:
+        db = get_db()
+        
+        # Get image before deleting
+        notice = db.execute('SELECT image FROM notices WHERE id = ?', (id,)).fetchone()
+        if notice and notice['image']:
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'], notice['image'])
+            if os.path.exists(image_path):
+                os.remove(image_path)
+                print(f"🗑️ Image deleted: {image_path}")
+        
+        # Soft delete (set is_active = 0)
+        db.execute('UPDATE notices SET is_active = 0 WHERE id = ?', (id,))
+        db.commit()
+        db.close()
+        
+        flash('✅ Notice deleted successfully!', 'success')
+        
+    except Exception as e:
+        print(f"❌ Error: {e}")
+        flash(f'❌ Error: {str(e)}', 'danger')
+    
+    return redirect(url_for('admin_notices'))
+
 # ===== TEACHER CRUD =====
 
 @app.route('/admin/teachers')
