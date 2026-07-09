@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>North Bengal University - Seminar Details</title>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.003);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(145deg, #0b2a4a, #1a4a6e);
+            padding: 28px 32px 22px;
+            border-bottom: 5px solid #f5b342;
+        }
+
+        .header h1 {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header h1 i {
+            color: #f5b342;
+            font-size: 30px;
+        }
+
+        .header .sub {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 15px;
+            margin-top: 6px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        /* ===== NAV ===== */
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            background: #f8fafc;
+            padding: 14px 32px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 15px;
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .nav span {
+            color: #64748b;
+            cursor: default;
+            transition: 0.15s;
+        }
+
+        .nav span:hover {
+            color: #0b2a4a;
+        }
+
+        .nav .active {
+            color: #0b2a4a;
+            font-weight: 600;
+            border-bottom: 3px solid #f5b342;
+            padding-bottom: 4px;
+        }
+
+        /* ===== BODY ===== */
+        .body {
+            padding: 32px 32px 28px;
+        }
+
+        .body .tag {
+            display: inline-block;
+            background: #fef3c7;
+            color: #b45309;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 5px 16px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            margin-bottom: 18px;
+        }
+
+        .body h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0b2a4a;
+            margin-bottom: 6px;
+        }
+
+        .body .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 28px;
+            font-size: 14px;
+            color: #475569;
+            margin: 12px 0 18px;
+        }
+
+        .body .meta i {
+            margin-right: 8px;
+            color: #f5b342;
+            width: 18px;
+        }
+
+        .body .desc {
+            color: #1e293b;
+            font-size: 15.5px;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        /* ===== BUTTON ===== */
+        .btn-details {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(145deg, #0b2a4a, #1a4a6e);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 8px 22px -6px rgba(11, 42, 74, 0.35);
+            transition: all 0.25s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-details i {
+            font-size: 18px;
+            transition: transform 0.25s ease;
+        }
+
+        .btn-details:hover {
+            background: linear-gradient(145deg, #143c5e, #1f5a82);
+            box-shadow: 0 12px 30px -8px rgba(11, 42, 74, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-details:hover i {
+            transform: translateX(5px);
+        }
+
+        .btn-details:active {
+            transform: scale(0.97);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #f8fafc;
+            padding: 16px 32px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 13px;
+            color: #64748b;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer i {
+            color: #f5b342;
+        }
+
+        /* ========================================
+                   MODAL (POP-UP) 
+                ======================================== */
+        .modal-overlay {
+            display: none;
+            /* hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 42, 74, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            max-width: 640px;
+            width: 100%;
+            border-radius: 32px;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+            padding: 0;
+            overflow: hidden;
+            animation: slideUp 0.35s ease;
+        }
+
+        .modal-header {
+            background: linear-gradient(145deg, #0b2a4a, #1a4a6e);
+            padding: 24px 30px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid #f5b342;
+        }
+
+        .modal-header h3 {
+            color: #fff;
+            font-size: 22px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-header h3 i {
+            color: #f5b342;
+            font-size: 26px;
+        }
+
+        .modal-close {
+            background: rgba(255, 255, 255, 0.12);
+            border: none;
+            color: #fff;
+            width: 42px;
+            height: 42px;
+            border-radius: 40px;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 28px 30px 32px;
+        }
+
+        .modal-body .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .modal-body .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .modal-body .detail-item i {
+            width: 24px;
+            color: #f5b342;
+            font-size: 20px;
+            margin-top: 2px;
+            text-align: center;
+        }
+
+        .modal-body .detail-item .label {
+            font-weight: 600;
+            color: #0b2a4a;
+            min-width: 110px;
+            font-size: 15px;
+        }
+
+        .modal-body .detail-item .value {
+            color: #1e293b;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .modal-body .detail-item .value .highlight {
+            background: #fef3c7;
+            padding: 2px 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 14px;
+            color: #b45309;
+        }
+
+        .modal-body .register-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background: #f5b342;
+            color: #0b2a4a;
+            font-weight: 700;
+            padding: 12px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 18px -6px rgba(245, 179, 66, 0.45);
+        }
+
+        .modal-body .register-btn:hover {
+            background: #f0a832;
+            transform: translateY(-2px);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 20px;
+                flex-wrap: wrap;
+            }
+            .nav {
+                padding: 10px 18px;
+                font-size: 13px;
+                gap: 4px 12px;
+            }
+            .body {
+                padding: 22px 18px 20px;
+            }
+            .body h2 {
+                font-size: 21px;
+            }
+            .btn-details {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+            }
+            .modal-box {
+                border-radius: 20px;
+            }
+            .modal-header {
+                padding: 18px 20px;
+            }
+            .modal-header h3 {
+                font-size: 18px;
+            }
+            .modal-body {
+                padding: 20px;
+            }
+            .modal-body .detail-item {
+                flex-wrap: wrap;
+                gap: 4px 12px;
+            }
+            .modal-body .detail-item .label {
+                min-width: 80px;
+                font-size: 14px;
+            }
+            .footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 14px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== MAIN CARD ===== -->
+    <div class="card">
+
+        <!-- HEADER -->
+        <div class="header">
+            <h1>
+                <i class="fas fa-university"></i>
+                North Bengal University
+            </h1>
+            <div class="sub"><i class="fas fa-calendar-alt" style="margin-right:6px;"></i> Notices &amp; Announcements</div>
+        </div>
+
+        <!-- NAV -->
+        <div class="nav">
+            <span>Home</span>
+            <span>About</span>
+            <span>Academics</span>
+            <span>Admissions</span>
+            <span>Research</span>
+            <span>Facilities</span>
+            <span>Notices</span>
+            <span class="active">Contact</span>
+        </div>
+
+        <!-- BODY -->
+        <div class="body">
+            <div class="tag"><i class="fas fa-bullhorn" style="margin-right:8px;"></i> Latest Announcement</div>
+            <h2>🌟 International Seminar on AI &amp; ML</h2>
+
+            <div class="meta">
+                <span><i class="far fa-calendar-alt"></i> Posted: 2026-07-09 04:01:22</span>
+                <span><i class="far fa-clock"></i> Event: 15–17 July, 2026</span>
+                <span><i class="fas fa-map-marker-alt"></i> Hybrid Mode</span>
+            </div>
+
+            <p class="desc">
+                Join our premier international seminar on <strong>Artificial Intelligence</strong> and
+                <strong>Machine Learning</strong>, featuring keynote speakers from MIT, Stanford, and
+                IIT Bombay. Explore cutting-edge research, industry applications, and network with
+                global experts.
+            </p>
+
+            <!-- VIEW DETAILS BUTTON -->
+            <button class="btn-details" id="openModalBtn">
+                <i class="fas fa-eye"></i> View International Seminar Details
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <span><i class="fas fa-envelope"></i> info@nbu.ac.in</span>
+            <span><i class="fas fa-phone-alt"></i> +91 12345 67890</span>
+            <span><i class="fas fa-globe"></i> www.nbu.ac.in</span>
+        </div>
+    </div>
+
+    <!-- ========================================
+    MODAL (POP-UP) — Details
+    ======================================== -->
+    <div class="modal-overlay" id="modalOverlay">
+
+        <div class="modal-box">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h3>
+                    <i class="fas fa-robot"></i>
+                    Seminar Details
+                </h3>
+                <button class="modal-close" id="closeModalBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+
+                <div class="detail-item">
+                    <i class="fas fa-heading"></i>
+                    <span class="label">Full Title</span>
+                    <span class="value"><strong>International Seminar on Artificial Intelligence &amp; Machine Learning</strong></span>
+                </div>
+
+                <div class="detail-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span class="label">Dates</span>
+                    <span class="value">15 – 17 July, 2026 &nbsp; <span class="highlight">3 Days</span></span>
+                </div>
+
+                <div class="detail-item">
+                    <i class="fas fa-clock"></i>
+                    <span class="label">Time</span>
+                    <span class="value">9:30 AM – 5:30 PM (IST) daily</span>
+                </div>
+
+                <div class="detail-item">
+                    <i class="fas fa-map-pin"></i>
+                    <span class="label">Venue</span>
+                    <span class="value">North Bengal University Auditorium <br> <span style="font-size:14px;color:#64748b;">(Online option available via Zoom)</span></span>
+                </div>
+
+                <div class="detail-item">
+                    <i class="fas fa-users"></i>
+                    <span class="label">Keynote Speakers</span>
+                    <span class="value">
+                        • <strong>Prof. Andrew Ng</strong> (Stanford) <br>
+                        • <strong>Dr. Fei-Fei Li</strong> (Princeton) <br>
+                        • <strong>Prof. P. Bhattacharya</strong> (IIT Bombay) <br>
+                        • <strong>Dr. A. Kumar</strong> (Google Research)
+                    </span>
+                </div>
+
+                <div class="detail-item">
+                    <i class="fas fa-list-check"></i>
+                    <span class="label">Topics</span>
+                    <span class="value">Deep Learning, NLP, Computer Vision, Generative AI, Ethics in AI, ML in Healthcare</span>
+                </div>
+
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="label">Registration Deadline</span>
+                    <span class="value"><strong style="color:#b45309;">10 July, 2026</strong> (Extended)</span>
+                </div>
+
+                <div class="detail-item">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span class="label">Fees</span>
+                    <span class="value">Students: ₹1,500 &nbsp;|&nbsp; Faculty: ₹3,000 &nbsp;|&nbsp; Industry: ₹5,000</span>
+                </div>
+
+                <div class="detail-item">
+                    <i class="fas fa-link"></i>
+                    <span class="label">Mode</span>
+                    <span class="value"><span class="highlight">Hybrid</span> (Offline + Online)</span>
+                </div>
+
+                <!-- Register Button -->
+                <a href="#" class="register-btn" onclick="alert('🚀 Registration page will open here.')">
+                    <i class="fas fa-user-plus" style="margin-right:8px;"></i> Register Now
+                </a>
+
+                <p style="margin-top:16px;font-size:13px;color:#94a3b8;">
+                    <i class="fas fa-info-circle"></i> For queries, contact: seminar@nbu.ac.in
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const overlay = document.getElementById('modalOverlay');
+
+        // Open modal
+        openBtn.addEventListener('click', function() {
+            overlay.classList.add('show');
+            document.body.style.overflow = 'hidden'; // prevent scroll
+        });
+
+        // Close modal (X button)
+        closeBtn.addEventListener('click', function() {
+            overlay.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+
+        // Close modal when clicking outside the box (on overlay)
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && overlay.classList.contains('show')) {
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+
+</body>
+</html>
