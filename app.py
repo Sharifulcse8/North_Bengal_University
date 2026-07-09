@@ -252,19 +252,25 @@ def add_notice():
     if request.method == 'POST':
         title = request.form.get('title')
         content = request.form.get('content')
-        short_desc = request.form.get('short_desc', content[:150] if content else '')
+        short_desc = request.form.get('short_desc', '')
         category = request.form.get('category', 'General')
         
-        # Image upload
+        # If short_desc is empty, take first 150 characters from content
+        if not short_desc and content:
+            short_desc = content[:150] + ('...' if len(content) > 150 else '')
+        
+        # ===== IMAGE UPLOAD =====
         image_filename = None
         if 'image' in request.files:
             file = request.files['image']
             if file and file.filename and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
+                import time
                 unique_name = f"notice_{int(time.time())}_{filename}"
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], unique_name))
                 image_filename = unique_name
         
+        # ===== SAVE TO DATABASE =====
         db = get_db()
         db.execute(
             'INSERT INTO notices (title, content, short_desc, category, image) VALUES (?, ?, ?, ?, ?)',
@@ -273,7 +279,7 @@ def add_notice():
         db.commit()
         db.close()
         
-        flash('Notice added successfully!', 'success')
+        flash('✅ Notice added successfully!', 'success')
         return redirect(url_for('admin_notices'))
     
     return render_template('admin/add_notice.html')
