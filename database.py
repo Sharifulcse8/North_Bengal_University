@@ -16,19 +16,21 @@ def init_db():
     conn = get_db()
     cursor = conn.cursor()
     
-    # Notices Table
+    # ===== NOTICES TABLE (with short_desc) =====
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS notices (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             content TEXT NOT NULL,
+            short_desc TEXT DEFAULT '',
             category TEXT DEFAULT 'General',
-            date_posted TEXT DEFAULT CURRENT_TIMESTAMP,
+            image TEXT DEFAULT '',
+            date_posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             is_active INTEGER DEFAULT 1
         )
     ''')
     
-    # Teachers Table
+    # ===== TEACHERS TABLE =====
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS teachers (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -43,7 +45,7 @@ def init_db():
         )
     ''')
     
-    # Students Table
+    # ===== STUDENTS TABLE =====
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS students (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -60,7 +62,7 @@ def init_db():
         )
     ''')
     
-    # Departments Table
+    # ===== DEPARTMENTS TABLE =====
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS departments (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -74,5 +76,8 @@ def init_db():
     
     conn.commit()
     conn.close()
+    print("✅ Database initialized successfully!")
 
-init_db()
+# ===== RUN ONCE TO INITIALIZE =====
+if __name__ == '__main__':
+    init_db()
